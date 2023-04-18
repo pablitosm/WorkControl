@@ -8,4 +8,5 @@
     <string name="textoTituloMenu">WorkControl</string>
     <string name="textViewUsuario">Usuario</string>
     <string name="textViewContrasegna">Contraseña</string>
+    <string name="loginAcc">Inicia sesión en tu cuenta</string>
 </resources>
