@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">WorkControl</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
     <string name="boton_login">Login</string>
     <string name="boton_registrar">Registro</string>
     <string name="textoTituloMenu">WorkControl</string>
-    <string name="open">open</string>
-    <string name="close">close</string>
+    <string name="textViewUsuario">Usuario</string>
+    <string name="textViewContrasegna">Contraseña</string>
 </resources>

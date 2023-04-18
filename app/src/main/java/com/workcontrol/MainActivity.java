@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.workcontrol.modelo.Conexion;
 import com.workcontrol.modelo.Usuario;
 import com.workcontrol.vistas.Inicio;
+import com.workcontrol.vistas.Registro;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Usuario[] usuarioLogin = {new Usuario()};
 
     Button buttonLogin;
-    Button buttonRegistro;
+    // Button buttonRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         conexion = new Conexion(this);
 
         buttonLogin = findViewById(R.id.buttonLogin);
-        buttonRegistro = findViewById(R.id.buttonRegistrar);
+        //buttonRegistro = findViewById(R.id.buttonRegistrar);
 
         textoUsuario = findViewById(R.id.editTextTextPersonName);
         textoContrasegna = findViewById(R.id.editTextTextPassword);
@@ -75,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, registro.class);
-                startActivity(intent);
-            }
-        });
+//        buttonRegistro.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, Registro.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }
