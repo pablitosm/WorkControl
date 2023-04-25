@@ -8,6 +8,22 @@
     tools:context=".MainActivity">
 
 
+    <Button
+        android:id="@+id/buttonRegistrar"
+        android:layout_width="348dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:backgroundTint="#EDA341"
+        android:drawablePadding="12dp"
+        android:text="@string/boton_registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="466dp"

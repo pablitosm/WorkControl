@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13476992584",
+    "project_id": "workcontrol-9cfed",
+    "storage_bucket": "workcontrol-9cfed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13476992584:android:6f0ebae35a46dd9a6a2a7d",
+        "android_client_info": {
+          "package_name": "com.workcontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13476992584-f0lvm5ak34g4snai2cbrb28ucmbvuiqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASIdqFYGBn_kumfJCevjninHEhAAO7t2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13476992584-f0lvm5ak34g4snai2cbrb28ucmbvuiqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

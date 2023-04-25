@@ -10,16 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.workcontrol.modelo.Conexion;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.workcontrol.modelo.Usuario;
 import com.workcontrol.vistas.Inicio;
 import com.workcontrol.vistas.Registro;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
-    Conexion conexion;
 
     ArrayList<String> dni;
     ArrayList<String> nombre;
@@ -33,16 +35,17 @@ public class MainActivity extends AppCompatActivity {
     Usuario[] usuarioLogin = {new Usuario()};
 
     Button buttonLogin;
-    // Button buttonRegistro;
+    Button buttonRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        conexion = new Conexion(this);
+
+
 
         buttonLogin = findViewById(R.id.buttonLogin);
-        //buttonRegistro = findViewById(R.id.buttonRegistrar);
+        buttonRegistro = findViewById(R.id.buttonRegistrar);
 
         textoUsuario = findViewById(R.id.editTextTextPersonName);
         textoContrasegna = findViewById(R.id.editTextTextPassword);
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 dni = new ArrayList<>();
                 nombre = new ArrayList<>();
                 apellido = new ArrayList<>();
@@ -63,9 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 usuarioRecuperado.setDni(dniRecuperado);
                 usuarioRecuperado.setContrasegna(contrasengaRecuperado);
 
-                usuarioLogin[0] = recuperarUsuario(usuarioRecuperado);
-
-                if (usuarioLogin[0].getDni().toString().equals(dniRecuperado) && usuarioLogin[0].getContrasegna().toString().equals(contrasengaRecuperado)) {
+                boolean pepe = true;
+                if (pepe) {
                     Intent intent = new Intent(MainActivity.this, Inicio.class);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Login exitoso!", Toast.LENGTH_LONG).show();
@@ -76,30 +81,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        buttonRegistro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, Registro.class);
-//                startActivity(intent);
-//            }
-//        });
-
-
-    }
-
-    public Usuario recuperarUsuario (Usuario usuario) {
-        Usuario usuarioRecuperado = new Usuario();
-        Cursor cursor = conexion.consultar(usuario);
-
-        if (cursor.getCount() != 0) {
-            while (cursor.moveToNext()) {
-                usuarioRecuperado.setDni(cursor.getString(0));
-                usuarioRecuperado.setNombre(cursor.getString(1));
-                usuarioRecuperado.setApellido(cursor.getString(2));
-                usuarioRecuperado.setCorreo(cursor.getString(3));
-                usuarioRecuperado.setContrasegna(cursor.getString(4));
+        buttonRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Registro.class);
+                startActivity(intent);
             }
-        }
-        return usuarioRecuperado;
+        });
+
+
     }
 }

@@ -7,6 +7,21 @@
     android:background="#292929"
     tools:context=".vistas.Registro">
 
+    <Button
+        android:id="@+id/buttonRegistro"
+        android:layout_width="348dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="70dp"
+        android:backgroundTint="#EDA341"
+        android:drawablePadding="12dp"
+        android:text="@string/boton_registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -24,28 +39,35 @@
         tools:text="WORKCONTROL" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextDNI"
         android:layout_width="1188dp"
         android:layout_height="65dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_document"
+        android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="DNI"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.281" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/editTextCorreo"
         android:layout_width="1188dp"
         android:layout_height="65dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_mail"
+        android:drawablePadding="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Correo"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -54,27 +76,36 @@
         app:layout_constraintVertical_bias="0.654" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/editTextTextContrasegna"
         android:layout_width="1189dp"
         android:layout_height="62dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_lock"
+        android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Contraseña"
         android:inputType="textPassword"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775" />
+        app:layout_constraintVertical_bias="0.777" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/editTextApellido"
         android:layout_width="1188dp"
         android:layout_height="65dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_person"
+        android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Apellido"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -83,13 +114,17 @@
         app:layout_constraintVertical_bias="0.529" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/editTextNombre"
         android:layout_width="1188dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:layout_height="65dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_person"
+        android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Nombre"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
