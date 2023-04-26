@@ -1,5 +1,6 @@
 package com.workcontrol;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,10 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.modelo.Usuario;
 import com.workcontrol.vistas.Inicio;
 import com.workcontrol.vistas.Registro;
@@ -29,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> correo;
     ArrayList<String> contrasegna;
 
+    FirebaseAuth auth;
+    FirebaseFirestore database;
+
     EditText textoUsuario;
     EditText textoContrasegna;
 
@@ -42,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        database = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonRegistro = findViewById(R.id.buttonRegistrar);
@@ -54,41 +65,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String correoR = textoUsuario.getText().toString();
+                String contrasegnaR = textoContrasegna.getText().toString();
 
+                auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(MainActivity.this, Inicio.class));
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Ese usuario no está registrado", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
-                dni = new ArrayList<>();
-                nombre = new ArrayList<>();
-                apellido = new ArrayList<>();
-                correo = new ArrayList<>();
-                contrasegna = new ArrayList<>();
-
-                String dniRecuperado = textoUsuario.getText().toString();
-                String contrasengaRecuperado = textoContrasegna.getText().toString();
-
-                Usuario usuarioRecuperado = new Usuario();
-                usuarioRecuperado.setDni(dniRecuperado);
-                usuarioRecuperado.setContrasegna(contrasengaRecuperado);
-
-                boolean pepe = true;
-                if (pepe) {
-                    Intent intent = new Intent(MainActivity.this, Inicio.class);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Login exitoso!", Toast.LENGTH_LONG).show();
-                    } else {
-                    Toast.makeText(getApplicationContext(), "Login incorrecto!", Toast.LENGTH_LONG).show();
-
-                }
             }
         });
-
-        buttonRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Registro.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }

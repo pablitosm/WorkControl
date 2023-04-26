@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 import com.workcontrol.modelo.Usuario;
 
@@ -76,9 +77,9 @@ public class Registro extends AppCompatActivity {
                         database.collection("Users").add(datosUsuarios).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(getApplicationContext(), "EXITO", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), dni + " registrado correctamente", Toast.LENGTH_LONG).show();
                                 finish();
-                                startActivity(new Intent(Registro.this, Inicio.class));
+                                startActivity(new Intent(Registro.this, MainActivity.class));
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
