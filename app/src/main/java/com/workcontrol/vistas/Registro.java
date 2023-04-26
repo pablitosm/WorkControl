@@ -53,10 +53,6 @@ public class Registro extends AppCompatActivity {
         TextoContrasegna = findViewById(R.id.editTextTextContrasegna);
 
         buttonRegistrar = findViewById(R.id.buttonRegistro);
-
-        // nodoRaiz = FirebaseDatabase.getInstance();
-        // referencia = nodoRaiz.getReference();
-
         buttonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
