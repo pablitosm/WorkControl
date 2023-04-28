@@ -22,7 +22,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
-import com.workcontrol.modelo.Usuario;
+import com.workcontrol.validardni.ValidadorDNI;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,11 +57,14 @@ public class Registro extends AppCompatActivity {
         buttonRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String dni = TextoDNI.getText().toString();
                 String nombre = TextoNombre.getText().toString();
                 String apellido = TextoApellido.getText().toString();
                 String correo = TextoCorreo.getText().toString();
                 String contrasegna = TextoContrasegna.getText().toString();
+
+                ValidadorDNI dniValidar = new ValidadorDNI(dni);
 
                 auth.createUserWithEmailAndPassword(correo, contrasegna).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -87,7 +90,6 @@ public class Registro extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
                             }
                         });
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -95,8 +97,6 @@ public class Registro extends AppCompatActivity {
                         Toast.makeText(Registro.this, "ERROR", Toast.LENGTH_LONG).show();
                     }
                 });
-
-
             }
             });
     }
