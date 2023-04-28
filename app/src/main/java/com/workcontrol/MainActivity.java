@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         Date currentTime = Calendar.getInstance().getTime();
 
-
         database = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
