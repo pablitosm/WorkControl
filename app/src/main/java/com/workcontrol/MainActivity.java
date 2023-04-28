@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.vistas.Inicio;
 import com.workcontrol.vistas.Registro;
+import java.util.Calendar;
+import java.util.Date;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Date currentTime = Calendar.getInstance().getTime();
+
+
         database = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -49,23 +55,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String correoR = textoUsuario.getText().toString();
-                String contrasegnaR = textoContrasegna.getText().toString();
+                try {
 
-                auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(MainActivity.this, Inicio.class));
-                        // hacer que detecte si el usuario existe pero la contraseña es incorrecta
-                            // (¡no funciona!)
-                        } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
-                            Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                    String correoR = textoUsuario.getText().toString();
+                    String contrasegnaR = textoContrasegna.getText().toString();
+
+                    auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(MainActivity.this, Inicio.class));
+                                // hacer que detecte si el usuario existe pero la contraseña es incorrecta
+                                // (¡no funciona!)
+                            } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
+                                Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
+                    });
+                } catch (IllegalArgumentException iae) {
+                    Toast.makeText(getApplicationContext(), "El usuario o la contraseña no pueden estar vacíos", Toast.LENGTH_LONG).show();
+                }
+
+
 
             }
         });
