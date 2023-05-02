@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                     String correoR = textoUsuario.getText().toString();
                     String contrasegnaR = textoContrasegna.getText().toString();
 
+
+
                     auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
