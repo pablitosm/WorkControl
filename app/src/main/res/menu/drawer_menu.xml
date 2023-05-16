@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#292929"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item android:id="@+id/iniciar_trabajo"
+            android:icon="@drawable/baseline_trabajo"
+            android:background="#292929"
+            android:title="Iniciar trabajo"/>
         <item android:id="@+id/perfil"
             android:icon="@drawable/baseline_person"
+            android:background="#292929"
             android:title="Perfil"/>
-        <item android:id="@+id/prueba1"
-            android:icon="@drawable/baseline_lock"
-            android:title="Prueba1"/>
-        <item android:id="@+id/prueba2"
-            android:icon="@drawable/baseline_mail"
-            android:title="Prueba2"/>
+
     </group>
 </menu>

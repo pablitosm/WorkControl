@@ -16,12 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.workcontrol.vistas.Inicio;
+import com.workcontrol.vistas.InicioAdmin;
 import com.workcontrol.vistas.Registro;
 import java.util.Calendar;
 import java.util.Date;
-
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(MainActivity.this, Inicio.class));
+                                startActivity(new Intent(MainActivity.this, InicioAdmin.class));
                                 // hacer que detecte si el usuario existe pero la contraseña es incorrecta
                                 // (¡no funciona!)
                             } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
@@ -79,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IllegalArgumentException iae) {
                     Toast.makeText(getApplicationContext(), "El usuario o la contraseña no pueden estar vacíos", Toast.LENGTH_LONG).show();
                 }
-
-
-
             }
         });
         buttonRegistro.setOnClickListener(new View.OnClickListener() {
