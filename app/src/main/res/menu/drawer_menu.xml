@@ -4,7 +4,7 @@
     android:background="#292929"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/main_drawer_menu1" android:checkableBehavior="single">
         <item android:id="@+id/iniciar_trabajo"
             android:icon="@drawable/baseline_trabajo"
             android:background="#292929"
@@ -14,5 +14,27 @@
             android:background="#292929"
             android:title="Perfil"/>
 
+        <item android:id="@+id/hola1"
+            android:background="#292929"
+            android:title=""/>
+        <item android:id="@+id/hola2"
+            android:background="#292929"
+            android:title=""/>
+        <item android:id="@+id/hola3"
+            android:background="#292929"
+            android:title=""/>
+        <item android:id="@+id/hola4"
+            android:background="#292929"
+            android:title=""/>
+        <item android:id="@+id/hola5"
+            android:background="#292929"
+            android:title=""/>
+    </group>
+    <group android:id="@+id/main_drawer_menu2" android:checkableBehavior="single" >
+
+        <item android:id="@+id/cerrar_sesion"
+            android:icon="@drawable/baseline_cerrarsesion"
+            android:background="#292929"
+            android:title="Cerrar sesión"/>
     </group>
 </menu>
