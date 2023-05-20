@@ -21,8 +21,9 @@
     <Button
         android:id="@+id/buttonRegistro"
         android:layout_width="345dp"
-        android:layout_height="62dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="70dp"
+        android:textColor="#292929"
         android:backgroundTint="#EDA341"
         android:drawablePadding="12dp"
         android:onClick="sendData"
@@ -32,24 +33,20 @@
         app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintVertical_bias="0.863" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="466dp"
-        android:layout_height="98dp"
-        android:fontFamily="sans-serif-black"
-        android:text="WORK"
-        android:textColor="@color/textoNaranja"
-        android:textColorHint="#000000"
-        android:textSize="48sp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="124dp"
+        android:layout_height="135dp"
+        android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078"
-        tools:text="WORK" />
+        app:layout_constraintVertical_bias="0.037"
+        app:srcCompat="@drawable/casco" />
 
     <TextView
         android:id="@+id/textView4"
@@ -62,29 +59,33 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.261"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158"
+        app:layout_constraintVertical_bias="0.129"
         tools:text="CONTROL" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="124dp"
-        android:layout_height="135dp"
-        android:rotation="-90"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="466dp"
+        android:layout_height="98dp"
+        android:fontFamily="sans-serif-black"
+        android:text="WORK"
+        android:textColor="@color/textoNaranja"
+        android:textColorHint="#000000"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.261"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
-        app:srcCompat="@drawable/casco" />
+        app:layout_constraintVertical_bias="0.049"
+        tools:text="WORK" />
 
     <EditText
         android:id="@+id/editTextDNI"
         android:layout_width="345dp"
-        android:layout_height="62dp"
+        android:layout_height="55dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_document"
         android:drawablePadding="12dp"
@@ -98,12 +99,12 @@
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.283" />
 
     <EditText
         android:id="@+id/editTextTextContrasegna"
         android:layout_width="345dp"
-        android:layout_height="62dp"
+        android:layout_height="55dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_lock"
         android:drawablePadding="12dp"
@@ -117,12 +118,12 @@
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.716" />
 
     <EditText
         android:id="@+id/editTextNombre"
         android:layout_width="345dp"
-        android:layout_height="62dp"
+        android:layout_height="55dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_person"
         android:drawablePadding="12dp"
@@ -136,12 +137,12 @@
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.392" />
 
     <EditText
         android:id="@+id/editTextCorreo"
         android:layout_width="345dp"
-        android:layout_height="62dp"
+        android:layout_height="55dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_mail"
         android:drawablePadding="12dp"
@@ -155,12 +156,12 @@
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.608" />
 
     <EditText
         android:id="@+id/editTextApellido"
         android:layout_width="345dp"
-        android:layout_height="62dp"
+        android:layout_height="55dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_person"
         android:drawablePadding="12dp"
@@ -173,7 +174,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
