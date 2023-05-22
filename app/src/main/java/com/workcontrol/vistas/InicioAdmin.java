@@ -28,7 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.R;
 
-public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener{
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -41,6 +41,8 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     FirebaseFirestore database;
 
     private GoogleMap mMap;
+    GroundOverlay groundOverlay;
+
 
     LocationManager locationManager;
     LocationListener locationListener;
@@ -110,5 +112,20 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+        LocationListener.super.onProviderEnabled(provider);
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+        LocationListener.super.onProviderDisabled(provider);
     }
 }
