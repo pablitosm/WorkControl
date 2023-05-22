@@ -96,6 +96,8 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         images.add(BitmapDescriptorFactory.fromResource(R.drawable.png2));
         images.add(BitmapDescriptorFactory.fromResource(R.drawable.png3));
 
+        mMap.getUiSettings().setScrollGesturesEnabled(true);
+        mMap.getUiSettings().setScrollGesturesEnabledDuringRotateOrZoom(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
