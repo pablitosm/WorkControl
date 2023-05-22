@@ -84,13 +84,13 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         mMap.getUiSettings().setCompassEnabled(true);
 
 
-        LatLng myta = new LatLng(41.289119, -1.485617);
+        LatLng myta = new LatLng(41.29746312088064, -1.494265158430815);
 
-        mMap.addMarker(new MarkerOptions()
-                .position(myta)
-                .title("MYTA"));
+//        mMap.addMarker(new MarkerOptions()
+//                .position(myta)
+//                .title("MYTA"));
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myta, 15));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myta, 17));
 
     }
 
@@ -102,9 +102,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frgPrincipal, new trabajo()); //cargamos un fragment por defecto
                 fragmentTransaction.commit();
-                break;
-            case R.id.perfil:
-
                 break;
             case R.id.cerrar_sesion:
 
