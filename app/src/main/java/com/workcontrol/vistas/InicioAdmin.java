@@ -22,12 +22,18 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener{
 
@@ -43,6 +49,9 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     GroundOverlay groundOverlay;
+    BitmapDescriptor bitmapDescriptor;
+
+    private final List<BitmapDescriptor> images = new ArrayList<BitmapDescriptor>();
 
 
     LocationManager locationManager;
@@ -81,21 +90,46 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
             }
         };
 
+        images.clear();
+        images.add(BitmapDescriptorFactory.fromResource(R.drawable.png0));
+        images.add(BitmapDescriptorFactory.fromResource(R.drawable.png1));
+        images.add(BitmapDescriptorFactory.fromResource(R.drawable.png2));
+        images.add(BitmapDescriptorFactory.fromResource(R.drawable.png3));
 
+        mMap.getUiSettings().setScrollGesturesEnabled(true);
+        mMap.getUiSettings().setScrollGesturesEnabledDuringRotateOrZoom(true);
+        mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
 
-
-        LatLng myta = new LatLng(41.29746312088064, -1.494265158430815);
-
+        LatLng bmp0 = new LatLng(41.296692593054866, -1.5034166735097924);
+        LatLng bmp1 = new LatLng(41.290326593054866, -1.5034166735097924);
+        LatLng bmp2 = new LatLng(41.296702593054866, -1.4959166735097924);
+        LatLng bmp3 = new LatLng(41.290326593054866, -1.4959166735097924);
 //        mMap.addMarker(new MarkerOptions()
 //                .position(myta)
 //                .title("MYTA"));
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myta, 17));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bmp2, 17));
 
+        groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(images.get(0)).anchor(0, 1)
+                .position(bmp0, 628, 640));
+        groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(images.get(1)).anchor(0, 1)
+                .position(bmp1, 628, 710));
+
+        groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(images.get(2)).anchor(0, 1)
+                .position(bmp2, 628, 640));
+
+
+        groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(images.get(3)).anchor(0, 1)
+                .position(bmp3, 628, 710));
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
