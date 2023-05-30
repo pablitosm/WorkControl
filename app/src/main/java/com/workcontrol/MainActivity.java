@@ -4,12 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.StyleSpan;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -17,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.vistas.InicioAdmin;
+import com.workcontrol.vistas.InicioUsuario;
 import com.workcontrol.vistas.Registro;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText textoUsuario;
     EditText textoContrasegna;
+
+    TextView textoRegistro;
 
     Button buttonLogin;
     Button buttonRegistro;
@@ -44,11 +52,12 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         buttonLogin = findViewById(R.id.buttonLogin);
-        buttonRegistro = findViewById(R.id.buttonRegistrar);
+        // buttonRegistro = findViewById(R.id.buttonRegistrar);
+
+        textoRegistro = findViewById(R.id.textViewRegistro);
 
         textoUsuario = findViewById(R.id.editTextTextPersonName);
         textoContrasegna = findViewById(R.id.editTextTextPassword);
-
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,29 +66,42 @@ public class MainActivity extends AppCompatActivity {
 
                     String correoR = textoUsuario.getText().toString();
                     String contrasegnaR = textoContrasegna.getText().toString();
-
-
-
-                    auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                startActivity(new Intent(MainActivity.this, InicioAdmin.class));
-                                // hacer que detecte si el usuario existe pero la contraseña es incorrecta
-                                // (¡no funciona!)
-                            } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
-                                Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                    // if (correoR == "adriansanmigu@gmail.com") {
+                        auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    startActivity(new Intent(MainActivity.this, InicioAdmin.class));
+                                } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
+                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
+                        });
+                    // } else {
+//                        auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                if (task.isSuccessful()) {
+//                                    startActivity(new Intent(MainActivity.this, InicioUsuario.class));
+//                                } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
+//                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+//                                } else {
+//                                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+//                                }
+//                            }
+//                        });
+                   // }
+
+
+
                 } catch (IllegalArgumentException iae) {
                     Toast.makeText(getApplicationContext(), "El usuario o la contraseña no pueden estar vacíos", Toast.LENGTH_LONG).show();
                 }
             }
         });
-        buttonRegistro.setOnClickListener(new View.OnClickListener() {
+        textoRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Registro.class));

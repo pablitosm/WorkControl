@@ -12,6 +12,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_trabajo">activityTrabajo</string>
+
+    <string name="texto_registro_1">¿Nuevo usuario?, Regístrate</string>
+    <string name="texto_registro_2">aquí</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
