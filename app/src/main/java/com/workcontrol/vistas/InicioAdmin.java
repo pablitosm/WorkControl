@@ -67,6 +67,8 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_inicio);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
         mapFragment.getMapAsync(this);
+        setNavigationViewListener();
+
 
     }
 
@@ -135,18 +137,17 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.iniciar_trabajo:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frgPrincipal, new trabajo()); //cargamos un fragment por defecto
-                fragmentTransaction.commit();
-                break;
-            case R.id.cerrar_sesion:
-
+                startActivity(new Intent(InicioAdmin.this, trabajo.class));
                 break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
