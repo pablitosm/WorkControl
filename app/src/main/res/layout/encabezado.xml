@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#292929"
-    android:layout_height="225dp">
+    android:layout_height="180dp">
     <!-- el height se puede cambiar por si no se ve bien la barra -->
     <ImageView
         android:id="@+id/imageView5"

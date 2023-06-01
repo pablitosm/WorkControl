@@ -43,13 +43,29 @@
             android:background="#292929"
             android:title="Operarios"/>
 
-        <item android:id="@+id/cerrar_sesion"
-            android:icon="@drawable/baseline_cerrarsesion"
-            android:background="#292929"
-            android:title="Cerrar sesión"/>
     </group>
 
     <group android:id="@+id/main_drawer_menu2" android:checkableBehavior="single" >
 
+
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+
+
+
+        <item android:id="@+id/cerrar_sesion"
+            android:icon="@drawable/baseline_cerrarsesion"
+            android:background="#292929"
+            android:title="Cerrar sesión"/>
     </group>
 </menu>

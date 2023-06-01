@@ -4,17 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.StyleSpan;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -22,7 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.vistas.InicioAdmin;
-import com.workcontrol.vistas.InicioUsuario;
 import com.workcontrol.vistas.Registro;
 import java.util.Calendar;
 import java.util.Date;
@@ -57,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         textoRegistro = findViewById(R.id.textViewRegistro);
 
         textoUsuario = findViewById(R.id.editTextTextPersonName);
-        textoContrasegna = findViewById(R.id.editTextTextPassword);
+        textoContrasegna = findViewById(R.id.editTextTextContrasegna);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
