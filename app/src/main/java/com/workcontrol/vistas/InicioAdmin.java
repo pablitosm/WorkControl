@@ -15,6 +15,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,6 +32,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 
 import java.util.ArrayList;
@@ -41,6 +44,8 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+
+    TextView text;
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -67,6 +72,13 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_inicio);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
         mapFragment.getMapAsync(this);
+        setNavigationViewListener();
+
+        text = findViewById(R.id.textoUsuario);
+
+        text.setText("bienvenido adriansanmiguel");
+
+
     }
 
     public void getLastLocation () {
@@ -123,26 +135,52 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
                 .image(images.get(2)).anchor(0, 1)
                 .position(bmp2, 628, 640));
 
+
         groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
                 .image(images.get(3)).anchor(0, 1)
                 .position(bmp3, 628, 710));
     }
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+
+            case R.id.mapa:
+                startActivity(new Intent(InicioAdmin.this, InicioAdmin.class));
+                break;
+            case R.id.panel_control:
+                startActivity(new Intent(InicioAdmin.this, panel_control.class));
+                break;
             case R.id.iniciar_trabajo:
-                fragmentManager = getSupportFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frgPrincipal, new trabajo()); //cargamos un fragment por defecto
-                fragmentTransaction.commit();
+                startActivity(new Intent(InicioAdmin.this, trabajo.class));
+                break;
+
+            case R.id.informes:
+                startActivity(new Intent(InicioAdmin.this, informes.class));
+                break;
+            case R.id.turnos:
+                startActivity(new Intent(InicioAdmin.this, turnos.class));
+                break;
+
+            case R.id.maquinaria:
+                startActivity(new Intent(InicioAdmin.this, maquinaria.class));
+                break;
+            case R.id.operarios:
+                startActivity(new Intent(InicioAdmin.this, operarios.class));
                 break;
             case R.id.cerrar_sesion:
-
+                startActivity(new Intent(InicioAdmin.this, MainActivity.class));
                 break;
 
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
+        // drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override

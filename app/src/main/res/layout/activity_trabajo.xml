@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".vistas.trabajo">
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_trabajo"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="593dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,8 +20,8 @@
 
     <Button
         android:id="@+id/buttonRegistro"
-        android:layout_width="345dp"
-        android:layout_height="55dp"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
         android:layout_marginEnd="70dp"
         android:textColor="#292929"
         android:backgroundTint="#EDA341"
@@ -84,8 +84,8 @@
 
     <EditText
         android:id="@+id/editTextDNI"
-        android:layout_width="345dp"
-        android:layout_height="55dp"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_document"
         android:drawablePadding="12dp"
@@ -103,8 +103,8 @@
 
     <EditText
         android:id="@+id/editTextTextContrasegna"
-        android:layout_width="345dp"
-        android:layout_height="55dp"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_lock"
         android:drawablePadding="12dp"
@@ -122,8 +122,8 @@
 
     <EditText
         android:id="@+id/editTextNombre"
-        android:layout_width="345dp"
-        android:layout_height="55dp"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_person"
         android:drawablePadding="12dp"
@@ -141,8 +141,8 @@
 
     <EditText
         android:id="@+id/editTextCorreo"
-        android:layout_width="345dp"
-        android:layout_height="55dp"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_mail"
         android:drawablePadding="12dp"
@@ -160,8 +160,8 @@
 
     <EditText
         android:id="@+id/editTextApellido"
-        android:layout_width="345dp"
-        android:layout_height="55dp"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
         android:background="@drawable/custom_imput"
         android:drawableStart="@drawable/baseline_person"
         android:drawablePadding="12dp"

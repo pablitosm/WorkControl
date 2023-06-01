@@ -15,8 +15,28 @@
         android:theme="@style/Theme.AppCompat"
         tools:targetApi="31">
         <activity
-            android:name=".vistas.trabajo"
+            android:name=".vistas.operarios"
             android:exported="false" />
+        <activity
+            android:name=".vistas.maquinaria"
+            android:exported="false" />
+        <activity
+            android:name=".vistas.turnos"
+            android:exported="false" />
+        <activity
+            android:name=".vistas.informes"
+            android:exported="false" />
+        <activity
+            android:name=".vistas.panel_control"
+            android:exported="false" />
+        <activity
+            android:name=".vistas.InicioUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".vistas.trabajo"
+            android:exported="false"
+            android:label="@string/title_activity_trabajo"
+            android:theme="@style/NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

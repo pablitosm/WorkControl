@@ -6,11 +6,11 @@
 
     <group android:id="@+id/main_drawer_menu1" android:checkableBehavior="single">
         <item android:id="@+id/mapa"
-            android:icon="@drawable/baseline_trabajo"
+            android:icon="@drawable/baseline_map"
             android:background="#292929"
             android:title="Mapa"/>
         <item android:id="@+id/panel_control"
-            android:icon="@drawable/baseline_trabajo"
+            android:icon="@drawable/baseline_control_panel"
             android:background="#292929"
             android:title="Panel de control"/>
 
@@ -23,11 +23,11 @@
 
     <group android:id="@+id/main_drawer_menu3" android:checkableBehavior="single" >
         <item android:id="@+id/informes"
-            android:icon="@drawable/baseline_trabajo"
+            android:icon="@drawable/baseline_informes"
             android:background="#292929"
             android:title="Informes"/>
         <item android:id="@+id/turnos"
-            android:icon="@drawable/baseline_trabajo"
+            android:icon="@drawable/baseline_turnos"
             android:background="#292929"
             android:title="Turnos"/>
 
@@ -35,11 +35,11 @@
 
     <group android:id="@+id/main_drawer_menu4" android:checkableBehavior="single" >
         <item android:id="@+id/maquinaria"
-            android:icon="@drawable/baseline_trabajo"
+            android:icon="@drawable/baseline_maquinaria"
             android:background="#292929"
             android:title="Maquinaria"/>
         <item android:id="@+id/operarios"
-            android:icon="@drawable/baseline_trabajo"
+            android:icon="@drawable/baseline_operarios"
             android:background="#292929"
             android:title="Operarios"/>
 
