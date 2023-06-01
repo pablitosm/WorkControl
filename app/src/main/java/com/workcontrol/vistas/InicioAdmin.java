@@ -67,7 +67,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_inicio);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
         mapFragment.getMapAsync(this);
-
     }
 
     public void getLastLocation () {
@@ -124,13 +123,10 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
                 .image(images.get(2)).anchor(0, 1)
                 .position(bmp2, 628, 640));
 
-
         groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
                 .image(images.get(3)).anchor(0, 1)
                 .position(bmp3, 628, 710));
     }
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
