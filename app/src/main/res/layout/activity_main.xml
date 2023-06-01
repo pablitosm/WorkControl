@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#292929"
+    android:background="@drawable/degradado1"
     tools:context=".MainActivity">
 
 
@@ -41,6 +41,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.391" />
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="500dp"
+        android:layout_height="87dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true">
+
+
+        <EditText
+            android:id="@+id/editTextTextContrasegna"
+            android:layout_width="500dp"
+            android:layout_height="70dp"
+            android:background="@drawable/custom_imput"
+            android:drawableStart="@drawable/baseline_lock"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="@string/textViewContrasegna"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+
+
+            app:layout_constraintHorizontal_bias="0.2"
+
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="500dp"
@@ -57,24 +90,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.648" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="500dp"
-        android:layout_height="70dp"
-        android:background="@drawable/custom_imput"
-        android:drawableStart="@drawable/baseline_lock"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="@string/textViewContrasegna"
-        android:inputType="textPassword"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"

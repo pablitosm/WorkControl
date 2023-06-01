@@ -4,140 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#292929"
+    android:background="@drawable/degradado1"
     tools:context=".vistas.Registro">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="988dp"
-        android:layout_height="1383dp"
-        android:layout_marginEnd="-250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        app:srcCompat="@drawable/fondo" />
-
-    <Button
-        android:id="@+id/buttonRegistro"
-        android:layout_width="500dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="70dp"
-        android:textColor="#292929"
-        android:backgroundTint="#EDA341"
-        android:drawablePadding="12dp"
-        android:onClick="sendData"
-        android:text="@string/boton_registrar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView6"
         android:layout_width="124dp"
         android:layout_height="135dp"
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037"
+        app:layout_constraintVertical_bias="0.093"
         app:srcCompat="@drawable/casco" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="466dp"
-        android:layout_height="98dp"
-        android:fontFamily="sans-serif-black"
-        android:text="CONTROL"
-        android:textColor="@color/textoNaranja"
-        android:textColorHint="#000000"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.129"
-        tools:text="CONTROL" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="466dp"
-        android:layout_height="98dp"
-        android:fontFamily="sans-serif-black"
-        android:text="WORK"
-        android:textColor="@color/textoNaranja"
-        android:textColorHint="#000000"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049"
-        tools:text="WORK" />
-
-    <EditText
-        android:id="@+id/editTextDNI"
-        android:layout_width="500dp"
-        android:layout_height="70dp"
-        android:background="@drawable/custom_imput"
-        android:drawableStart="@drawable/baseline_document"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="DNI"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.283" />
-
-    <EditText
-        android:id="@+id/editTextTextContrasegna"
-        android:layout_width="500dp"
-        android:layout_height="70dp"
-        android:background="@drawable/custom_imput"
-        android:drawableStart="@drawable/baseline_lock"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716" />
-
-    <EditText
-        android:id="@+id/editTextNombre"
-        android:layout_width="500dp"
-        android:layout_height="70dp"
-        android:background="@drawable/custom_imput"
-        android:drawableStart="@drawable/baseline_person"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392" />
 
     <EditText
         android:id="@+id/editTextCorreo"
@@ -153,10 +34,96 @@
         android:paddingEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608" />
+        app:layout_constraintVertical_bias="0.612" />
+
+    <Button
+        android:id="@+id/buttonRegistro"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="70dp"
+        android:backgroundTint="#EDA341"
+        android:drawablePadding="12dp"
+        android:onClick="sendData"
+        android:text="@string/boton_registrar"
+        android:textColor="#292929"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="466dp"
+        android:layout_height="98dp"
+        android:fontFamily="sans-serif-black"
+        android:text="WORK"
+        android:textColor="@color/textoNaranja"
+        android:textColorHint="#000000"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095"
+        tools:text="WORK" />
+
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_person"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="500dp"
+        android:layout_height="87dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729"
+        app:passwordToggleEnabled="true">
+
+
+        <EditText
+            android:id="@+id/editTextTextContrasegna"
+            android:layout_width="500dp"
+            android:layout_height="70dp"
+            android:background="@drawable/custom_imput"
+            android:drawableStart="@drawable/baseline_lock"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="@string/textViewContrasegna"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+
+
+            app:layout_constraintHorizontal_bias="0.2"
+
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/editTextApellido"
@@ -172,8 +139,75 @@
         android:paddingEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
+
+    <EditText
+        android:id="@+id/editTextDNI"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_document"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="DNI"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="466dp"
+        android:layout_height="98dp"
+        android:fontFamily="sans-serif-black"
+        android:text="CONTROL"
+        android:textColor="@color/textoNaranja"
+        android:textColorHint="#000000"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.156"
+        tools:text="CONTROL" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="988dp"
+        android:layout_height="1383dp"
+        android:layout_marginEnd="-250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/fondo" />
+
+    <!--    <EditText-->
+<!--        android:id="@+id/editTextTextContrasegna"-->
+<!--        android:layout_width="500dp"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:background="@drawable/custom_imput"-->
+<!--        android:drawableStart="@drawable/baseline_lock"-->
+<!--        android:drawablePadding="12dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Contraseña"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:paddingStart="12dp"-->
+<!--        android:paddingEnd="12dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.098"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.716" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,10 +81,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-    public void getLastLocation () {
-
-    }
-
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 

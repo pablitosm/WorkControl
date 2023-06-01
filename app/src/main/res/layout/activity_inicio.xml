@@ -28,7 +28,7 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvView"
         android:layout_width="509dp"
-        android:layout_height="803dp"
+        android:layout_height="920dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/encabezado"
@@ -41,22 +41,14 @@
             android:layout_width="522dp"
             android:layout_height="843dp"
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textoUsuario2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 
     <fragment
         android:id="@+id/maps"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="1193dp"
-        android:layout_height="800dp"
+        android:layout_width="1194dp"
+        android:layout_height="920dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
