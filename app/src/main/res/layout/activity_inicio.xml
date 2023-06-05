@@ -7,6 +7,8 @@
     tools:context=".vistas.InicioAdmin"
     tools:openDrawer="start">
 
+
+
     <FrameLayout
         android:id="@+id/frgPrincipal"
         android:layout_width="match_parent"

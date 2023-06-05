@@ -84,9 +84,7 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         setNavigationViewListener();
 
-        textView7 = findViewById(R.id.textView7);
-
-        textView7.setText(getCurrLocation());
+        // textView7.setText(getCurrLocation());
 
 
         text = findViewById(R.id.textoUsuario);
@@ -97,14 +95,14 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-    private String getCurrLocation () {
-        String resultado = "";
-        int index = locationResult.getLocations().size() - 1;
-
-        double latitud = locationResult.getLocations().get(index).getLatitude();
-        double longitud = locationResult.getLocations().get(index).getLongitude();
-        return resultado = "latitud = " + latitud + ", longitud = " + longitud;
-    }
+//    private String getCurrLocation () {
+//        String resultado = "";
+//        int index = locationResult.getLocations().size() - 1;
+//
+//        double latitud = locationResult.getLocations().get(index).getLatitude();
+//        double longitud = locationResult.getLocations().get(index).getLongitude();
+//        return resultado = "latitud = " + latitud + ", longitud = " + longitud;
+//    }
 
     private void turnOnGPS() {
     }
