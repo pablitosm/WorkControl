@@ -11,4 +11,7 @@
 /captures
 .externalNativeBuild
 .cxx
+.lock
+.bin
+.probe
 local.properties
