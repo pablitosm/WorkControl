@@ -1,28 +1,17 @@
 package com.workcontrol.vistas;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationRequest;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import androidx.appcompat.widget.Toolbar;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -34,105 +23,51 @@ import com.google.android.gms.maps.model.GroundOverlay;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener{
+public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    Toolbar toolbar;
-    NavigationView navigationView;
-
-    private LocationRequest locationRequest;
-
-    TextView text;
-
-    TextView textView7;
-
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
-
-    FirebaseFirestore database;
 
     private GoogleMap mMap;
     GroundOverlay groundOverlay;
-    BitmapDescriptor bitmapDescriptor;
 
-    LocationResult locationResult;
+    private final List<BitmapDescriptor> images = new ArrayList<>();
 
-    private final List<BitmapDescriptor> images = new ArrayList<BitmapDescriptor>();
-
+    private static final String TAG = "MainActivity";
+    int LOCATION_REQUEST_CODE = 10001;
 
     LocationManager locationManager;
     LocationListener locationListener;
     LatLng userLatLong;
 
-    FusedLocationProviderClient fusedLocationProviderClient;
-    Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
-        mapFragment.getMapAsync(this);
-        setNavigationViewListener();
-
-        // textView7.setText(getCurrLocation());
-
-
-        text = findViewById(R.id.textoUsuario);
-
-        text.setText("bienvenido adriansanmiguel");
-
-
-
-    }
-
-//    private String getCurrLocation () {
-//        String resultado = "";
-//        int index = locationResult.getLocations().size() - 1;
-//
-//        double latitud = locationResult.getLocations().get(index).getLatitude();
-//        double longitud = locationResult.getLocations().get(index).getLongitude();
-//        return resultado = "latitud = " + latitud + ", longitud = " + longitud;
-//    }
-
-    private void turnOnGPS() {
-    }
-
-    private boolean isGPSEnabled() {
-        LocationManager locationManager1 = null;
-        boolean isEnabled = false;
-
-        if (locationManager1 == null) {
-            locationManager1 = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
         }
-        isEnabled = locationManager1.isLocationEnabled();
-        return isEnabled;
+
+
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-
         mMap = googleMap;
-
-
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-                userLatLong = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(userLatLong).title("Ubicacion"));
-            }
+        locationListener = location -> {
+            userLatLong = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(userLatLong).title("Ubicacion"));
         };
 
         images.clear();
@@ -152,9 +87,7 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         LatLng bmp1 = new LatLng(41.290326593054866, -1.5034166735097924);
         LatLng bmp2 = new LatLng(41.296702593054866, -1.4959166735097924);
         LatLng bmp3 = new LatLng(41.290326593054866, -1.4959166735097924);
-//        mMap.addMarker(new MarkerOptions()
-//                .position(myta)
-//                .title("MYTA"));
+
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bmp2, 17));
 
@@ -173,9 +106,24 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         groundOverlay = mMap.addGroundOverlay(new GroundOverlayOptions()
                 .image(images.get(3)).anchor(0, 1)
                 .position(bmp3, 628, 710));
+
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+            final List<LatLng> polylinePoints = new ArrayList<>();
+            polylinePoints.add(new LatLng(41.296692593054866, -1.5034166735097924));
+            polylinePoints.add(new LatLng(41.290326593054866, -1.5034166735097924));
+            polylinePoints.add(new LatLng(41.296702593054866, -1.4959166735097924));
+            polylinePoints.add(new LatLng(41.290326593054866, -1.4959166735097924));
+
+
+            final Polyline polyline = mMap.addPolyline(new PolylineOptions()
+                    .addAll(polylinePoints)
+                    .color(Color.rgb(238, 164, 65))
+                    .width(10));
+
     }
 
-
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -208,15 +156,8 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
                 break;
 
         }
-        // drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    private void setNavigationViewListener() {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
     @Override
     public void onLocationChanged(@NonNull Location location) {
 
