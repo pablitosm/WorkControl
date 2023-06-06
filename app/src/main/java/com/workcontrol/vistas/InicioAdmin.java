@@ -3,6 +3,7 @@ package com.workcontrol.vistas;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
@@ -13,12 +14,15 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationRequest;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -45,7 +49,11 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     Toolbar toolbar;
     NavigationView navigationView;
 
+    private LocationRequest locationRequest;
+
     TextView text;
+
+    TextView textView7;
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -55,6 +63,8 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     GroundOverlay groundOverlay;
     BitmapDescriptor bitmapDescriptor;
+
+    LocationResult locationResult;
 
     private final List<BitmapDescriptor> images = new ArrayList<BitmapDescriptor>();
 
@@ -74,11 +84,39 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         setNavigationViewListener();
 
+        // textView7.setText(getCurrLocation());
+
+
         text = findViewById(R.id.textoUsuario);
 
         text.setText("bienvenido adriansanmiguel");
 
 
+
+    }
+
+//    private String getCurrLocation () {
+//        String resultado = "";
+//        int index = locationResult.getLocations().size() - 1;
+//
+//        double latitud = locationResult.getLocations().get(index).getLatitude();
+//        double longitud = locationResult.getLocations().get(index).getLongitude();
+//        return resultado = "latitud = " + latitud + ", longitud = " + longitud;
+//    }
+
+    private void turnOnGPS() {
+    }
+
+    private boolean isGPSEnabled() {
+        LocationManager locationManager1 = null;
+        boolean isEnabled = false;
+
+        if (locationManager1 == null) {
+            locationManager1 = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        }
+        isEnabled = locationManager1.isLocationEnabled();
+        return isEnabled;
     }
 
     @Override

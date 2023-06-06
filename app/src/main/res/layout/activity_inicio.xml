@@ -7,6 +7,8 @@
     tools:context=".vistas.InicioAdmin"
     tools:openDrawer="start">
 
+
+
     <FrameLayout
         android:id="@+id/frgPrincipal"
         android:layout_width="match_parent"
@@ -41,6 +43,13 @@
             android:layout_width="522dp"
             android:layout_height="843dp"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 
