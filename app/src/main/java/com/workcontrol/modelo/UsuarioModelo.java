@@ -63,6 +63,6 @@ public class UsuarioModelo {
     @Override
     public String toString() {
         return "Usuario{" + "dni='" + dni + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' +
-                ", correo='" + correo + '\'' + ", contrasegna='" + contrasegna + '\'' + '}';
+                ", correo='" + correo + '\'' + ", contrasesadgna='" + contrasegna + '\'' + '}';
     }
 }

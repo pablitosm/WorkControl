@@ -4,28 +4,32 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
+import com.workcontrol.modelo.UsuarioModelo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class maquinaria extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseFirestore database;
+
+    TextView textViewHoal;
 
 
     @Override
@@ -33,25 +37,37 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
         database = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_maquinaria);
+
+        textViewHoal = findViewById(R.id.textView9);
+
         setNavigationViewListener();
         recuperarDatosDBPrueba();
     }
 
     public void recuperarDatosDBPrueba() {
-            DocumentReference docRef = database.collection("Users").document("53sUJvEYQsGsapRoMQ4x");
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+            database.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Map<String, String> datosUsuarios = new HashMap<>();
-                            Log.d(TAG, "Prueba hola hola hola - " + document.getData());
-                        } else {
-                            Log.d(TAG, "Prueba adios adios adios");
+                        for (DocumentSnapshot document : task.getResult()) {
+
+                            // Log.d(TAG, document.getId() + " => " + document.getData());
+                            UsuarioModelo usuario = document.toObject(UsuarioModelo.class);
+                            Map<Object, Object> datosUsuarios = new HashMap<>();
+                            datosUsuarios.put("users", usuario);
+
+                            Log.d(TAG, document.getId() + "prueba => " + datosUsuarios);
+
+
+                            textViewHoal.setText(Objects.requireNonNull(document.getData()).toString());
                         }
+
+
+
+
                     } else {
-                        Log.d(TAG, "el get ha fallado - " + task.getException());
+                        Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 }
             });
