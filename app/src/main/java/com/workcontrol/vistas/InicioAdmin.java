@@ -2,16 +2,25 @@ package com.workcontrol.vistas;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -25,6 +34,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
@@ -33,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener {
+
 
 
     private GoogleMap mMap;
@@ -47,6 +59,10 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     LocationListener locationListener;
     LatLng userLatLong;
 
+    private static Context context;
+
+    private FusedLocationProviderClient fusedLocationClient;
+    public final List<LatLng> polylinePoints = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +73,74 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+        InicioAdmin.context = getApplicationContext();
+        setNavigationViewListener();
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        // Verificar si se tienen los permisos de ubicación
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Los permisos ya están concedidos, solicita actualizaciones de ubicación
+            startLocationUpdates();
+        } else {
+            // Los permisos no están concedidos, solicitarlos al usuario
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+        }
+
+    }
+
+    private void startLocationUpdates() {
+        try {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 0, this);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+
+        // Utiliza la ubicación actualizada como desees
+        // Por ejemplo, mostrar las coordenadas en un TextView
+        Log.d(TAG, "Ubicación: Latitud " + latitude + ", Longitud " + longitude);
+
+
+        polylinePoints.add(new LatLng(latitude, longitude));
+
+        Log.d(TAG, "onLocationChanged: " + polylinePoints.toString());
+
+
+        final Polyline polyline = mMap.addPolyline(new PolylineOptions()
+                .addAll(polylinePoints)
+                .color(Color.rgb(238, 164, 65))
+                .width(10));
 
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // El usuario concedió el permiso de ubicación, solicita actualizaciones de ubicación
+                startLocationUpdates();
+            } else {
+                // El usuario denegó el permiso de ubicación, muestra un mensaje o realiza alguna acción apropiada
+                Toast.makeText(this, "Permiso de ubicación denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        locationManager.removeUpdates(this);
+    }
+
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -109,21 +190,20 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-            final List<LatLng> polylinePoints = new ArrayList<>();
-            polylinePoints.add(new LatLng(41.296692593054866, -1.5034166735097924));
-            polylinePoints.add(new LatLng(41.290326593054866, -1.5034166735097924));
-            polylinePoints.add(new LatLng(41.296702593054866, -1.4959166735097924));
-            polylinePoints.add(new LatLng(41.290326593054866, -1.4959166735097924));
-
-
-            final Polyline polyline = mMap.addPolyline(new PolylineOptions()
-                    .addAll(polylinePoints)
-                    .color(Color.rgb(238, 164, 65))
-                    .width(10));
+//            final List<LatLng> polylinePoints = new ArrayList<>();
+//            polylinePoints.add(new LatLng(41.296692593054866, -1.5034166735097924));
+//            polylinePoints.add(new LatLng(41.290326593054866, -1.5034166735097924));
+//            polylinePoints.add(new LatLng(41.296702593054866, -1.4959166735097924));
+//            polylinePoints.add(new LatLng(41.290326593054866, -1.4959166735097924));
+//
+//
+//            final Polyline polyline = mMap.addPolyline(new PolylineOptions()
+//                    .addAll(polylinePoints)
+//                    .color(Color.rgb(238, 164, 65))
+//                    .width(10));
 
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -158,10 +238,12 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         }
         return true;
     }
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
 
+    private void setNavigationViewListener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
+        navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public void onProviderEnabled(@NonNull String provider) {
@@ -172,4 +254,5 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     public void onProviderDisabled(@NonNull String provider) {
         LocationListener.super.onProviderDisabled(provider);
     }
+
 }
