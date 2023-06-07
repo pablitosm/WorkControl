@@ -28,12 +28,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CustomCap;
 import com.google.android.gms.maps.model.GroundOverlay;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.RoundCap;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
@@ -112,10 +114,17 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
         Log.d(TAG, "onLocationChanged: " + polylinePoints.toString());
 
 
+
         final Polyline polyline = mMap.addPolyline(new PolylineOptions()
                 .addAll(polylinePoints)
                 .color(Color.rgb(238, 164, 65))
                 .width(10));
+
+        polyline.setStartCap(new RoundCap());
+//         polyline.setEndCap();
+//        polyline.setEndCap(
+//                new CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.arrow),
+//                        16));
 
 
     }
@@ -189,18 +198,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
                 .position(bmp3, 628, 710));
 
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-//            final List<LatLng> polylinePoints = new ArrayList<>();
-//            polylinePoints.add(new LatLng(41.296692593054866, -1.5034166735097924));
-//            polylinePoints.add(new LatLng(41.290326593054866, -1.5034166735097924));
-//            polylinePoints.add(new LatLng(41.296702593054866, -1.4959166735097924));
-//            polylinePoints.add(new LatLng(41.290326593054866, -1.4959166735097924));
-//
-//
-//            final Polyline polyline = mMap.addPolyline(new PolylineOptions()
-//                    .addAll(polylinePoints)
-//                    .color(Color.rgb(238, 164, 65))
-//                    .width(10));
 
     }
 

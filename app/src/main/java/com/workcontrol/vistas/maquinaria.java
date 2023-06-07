@@ -63,9 +63,6 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
                             textViewHoal.setText(Objects.requireNonNull(document.getData()).toString());
                         }
 
-
-
-
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }

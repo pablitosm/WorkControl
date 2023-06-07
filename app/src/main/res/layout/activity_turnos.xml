@@ -4,101 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vistas.turnos">
+    tools:context=".vistas.panel_control">
 
-    <TableLayout
-        android:layout_width="1416dp"
-        android:layout_height="114dp"
-        android:layout_margin="40dp"
-        android:background="@android:color/holo_green_dark"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nvView"
+        android:layout_width="509dp"
+        android:layout_height="920dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/encabezado"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:menu="@menu/drawer_menu"
+        tools:layout_editor_absoluteY="-2dp" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="522dp"
+            android:layout_height="843dp"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
+
+    <ScrollView
+        android:id="@+id/scrollview1"
+        android:layout_width="1408dp"
+        android:layout_height="915dp"
+        android:layout_alignParentLeft="true"
+        android:background="#292929"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <!-- Table Heading -->
+        <HorizontalScrollView
+            android:id="@+id/hsscrll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TableRow android:background="@color/black">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Num. cargas"
-                android:background="@android:color/black"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Maquinaria"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Operario"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Fecha de inicio"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Fecha de fin"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Turno"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-
-        </TableRow>
-
-        <!-- Table Data -->
-
-        <TableRow>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="1416dp"
+            <RelativeLayout
+                android:id="@+id/RelativeLayout1"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-                />
+                <TableLayout
+                    android:id="@+id/table_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp">
 
-        </TableRow>
+                </TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 
-
-
-    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
