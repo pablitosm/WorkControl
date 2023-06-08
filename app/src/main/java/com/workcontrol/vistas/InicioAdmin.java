@@ -201,6 +201,7 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

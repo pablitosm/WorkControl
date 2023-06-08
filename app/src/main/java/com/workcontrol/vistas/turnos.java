@@ -70,15 +70,6 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
                                 miObjeto.getNombre_operario(), miObjeto.getFecha_inicio(), miObjeto.getFecha_fin(), miObjeto.getTurno()));
 
 
-
-
-
-
-                        String campo1 = miObjeto.getTurno();
-                        String campo2 = miObjeto.getNombre_maquina();
-
-
-
                    }
 
                     showTableLayout();
@@ -95,37 +86,48 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
         TableLayout stk = (TableLayout) findViewById(R.id.table_main);  //Table layout
         TableRow tbrow0 = new TableRow(this); //Table row for headers
 
-        Log.d(TAG, "mapa 0: " + turnosMapa.get(0));
-        Log.d(TAG, "mapa 1: " + turnosMapa.get(1));
-
         //Table Headers
-        TextView tv0 = new TextView(this);
-        tv0.setText(" Operario ");
-        tv0.setTextSize(40);
-        tv0.setTextColor(getResources().getColor(R.color.textoNaranja));
-        tv0.setTypeface(null, Typeface.BOLD);
-        tbrow0.addView(tv0);
-
         TextView tv1 = new TextView(this);
-        tv1.setText(" Maquina ");
+        tv1.setText(" Operario ");
         tv1.setTextSize(40);
         tv1.setTextColor(getResources().getColor(R.color.textoNaranja));
         tv1.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv1);
 
         TextView tv2 = new TextView(this);
-        tv2.setText(" Inicio ");
+        tv2.setText(" Maquina ");
         tv2.setTextSize(40);
         tv2.setTextColor(getResources().getColor(R.color.textoNaranja));
         tv2.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv2);
 
         TextView tv3 = new TextView(this);
-        tv3.setText(" Fin ");
+        tv3.setText(" Inicio ");
         tv3.setTextSize(40);
         tv3.setTextColor(getResources().getColor(R.color.textoNaranja));
         tv3.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv3);
+
+        TextView tv4 = new TextView(this);
+        tv4.setText(" Fin ");
+        tv4.setTextSize(40);
+        tv4.setTextColor(getResources().getColor(R.color.textoNaranja));
+        tv4.setTypeface(null, Typeface.BOLD);
+        tbrow0.addView(tv4);
+
+        TextView tv5 = new TextView(this);
+        tv5.setText(" Turno ");
+        tv5.setTextSize(40);
+        tv5.setTextColor(getResources().getColor(R.color.textoNaranja));
+        tv5.setTypeface(null, Typeface.BOLD);
+        tbrow0.addView(tv5);
+
+        TextView tv6 = new TextView(this);
+        tv6.setText(" Cargas ");
+        tv6.setTextSize(40);
+        tv6.setTextColor(getResources().getColor(R.color.textoNaranja));
+        tv6.setTypeface(null, Typeface.BOLD);
+        tbrow0.addView(tv6);
 
         //End of Table Headers
         //Add to the tablelayout
@@ -158,7 +160,21 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
             t4v.setTextColor(Color.WHITE);
             t4v.setGravity(Gravity.CENTER);
             tbrow.addView(t4v);
+
+            TextView t5v = new TextView(this);
+            t5v.setText(turnosMapa.get(i).getTurno());
+            t5v.setTextColor(Color.WHITE);
+            t5v.setGravity(Gravity.CENTER);
+            tbrow.addView(t5v);
             stk.addView(tbrow);
+
+
+            TextView t6v = new TextView(this);
+            t6v.setText(turnosMapa.get(i).getNumero_cargas());
+            t6v.setTextColor(Color.WHITE);
+            t6v.setGravity(Gravity.CENTER);
+            tbrow.addView(t6v);
+
 
         }
 

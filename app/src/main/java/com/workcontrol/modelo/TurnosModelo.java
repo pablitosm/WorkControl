@@ -2,7 +2,7 @@ package com.workcontrol.modelo;
 
 public class TurnosModelo {
 
-    private int numero_cargas;
+    private String numero_cargas;
     private String nombre_maquina;
     private String nombre_operario;
     private String fecha_inicio;
@@ -13,7 +13,7 @@ public class TurnosModelo {
 
     }
 
-    public TurnosModelo(int numero_cargas, String nombre_maquina, String nombre_operario, String fecha_inicio, String fecha_fin, String turno) {
+    public TurnosModelo(String numero_cargas, String nombre_maquina, String nombre_operario, String fecha_inicio, String fecha_fin, String turno) {
         this.numero_cargas = numero_cargas;
         this.nombre_maquina = nombre_maquina;
         this.nombre_operario = nombre_operario;
@@ -22,11 +22,11 @@ public class TurnosModelo {
         this.turno = turno;
     }
 
-    public int getNumero_cargas() {
+    public String getNumero_cargas() {
         return numero_cargas;
     }
 
-    public void setNumero_cargas(int numero_cargas) {
+    public void setNumero_cargas(String numero_cargas) {
         this.numero_cargas = numero_cargas;
     }
 
