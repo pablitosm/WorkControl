@@ -215,14 +215,12 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
             case R.id.iniciar_trabajo:
                 startActivity(new Intent(InicioAdmin.this, trabajo.class));
                 break;
-
             case R.id.informes:
                 startActivity(new Intent(InicioAdmin.this, informes.class));
                 break;
             case R.id.turnos:
                 startActivity(new Intent(InicioAdmin.this, turnos.class));
                 break;
-
             case R.id.maquinaria:
                 startActivity(new Intent(InicioAdmin.this, maquinaria.class));
                 break;

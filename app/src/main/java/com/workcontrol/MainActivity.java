@@ -1,10 +1,14 @@
 package com.workcontrol;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,9 +22,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.vistas.InicioAdmin;
+import com.workcontrol.vistas.InicioUsuario;
 import com.workcontrol.vistas.Registro;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textoRegistro;
 
     Button buttonLogin;
-    Button buttonRegistro;
 
+    public List<String> listaAdmins = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +55,13 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         buttonLogin = findViewById(R.id.buttonLogin);
-        // buttonRegistro = findViewById(R.id.buttonRegistrar);
 
         textoRegistro = findViewById(R.id.textViewRegistro);
-
         textoUsuario = findViewById(R.id.editTextTextPersonName);
         textoContrasegna = findViewById(R.id.editTextTextContrasegna);
+
+        listaAdmins.add("adriansanmigu@gmail.com");
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,33 +72,21 @@ public class MainActivity extends AppCompatActivity {
                     String contrasegnaR = textoContrasegna.getText().toString();
                     // if (correoR == "adriansanmigu@gmail.com") {
                         auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @SuppressLint("RestrictedApi")
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
+                                Log.d(TAG, "onComplete: " + correoR + contrasegnaR);
+                                if (task.isSuccessful() && listaAdmins.contains(correoR)) {
                                     startActivity(new Intent(MainActivity.this, InicioAdmin.class));
+                                    Toast.makeText(getApplicationContext(), "Logeado como administrador", Toast.LENGTH_LONG).show();
                                 } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
                                     Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(MainActivity.this, InicioUsuario.class));
+                                    Toast.makeText(getApplicationContext(), "Logeado como operario", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
-                    // } else {
-//                        auth.signInWithEmailAndPassword(correoR, contrasegnaR).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    startActivity(new Intent(MainActivity.this, InicioUsuario.class));
-//                                } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
-//                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
-//                                } else {
-//                                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
-//                                }
-//                            }
-//                        });
-                   // }
-
-
 
                 } catch (IllegalArgumentException iae) {
                     Toast.makeText(getApplicationContext(), "El usuario o la contraseña no pueden estar vacíos", Toast.LENGTH_LONG).show();
