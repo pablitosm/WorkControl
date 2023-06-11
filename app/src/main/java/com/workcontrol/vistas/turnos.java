@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
@@ -58,7 +59,7 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
 
     public void recuperarDatosDBPrueba() {
 
-        database.collection("Turnos").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        database.collection("Turnos").orderBy("nombre_operario", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -68,11 +69,11 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
 
 
                         turnosMapa.add(new TurnosModelo(miObjeto.getNumero_cargas(), miObjeto.getNombre_maquina(),
-                                miObjeto.getNombre_operario(), miObjeto.getFecha_inicio(), miObjeto.getFecha_fin(), miObjeto.getTurno()));
+                                miObjeto.getNombre_operario(), miObjeto.getFecha_inicio(), miObjeto.getFecha_fin(), miObjeto.getTurno(), miObjeto.getCantidad_material()));
 
 
                    }
-
+                    Log.d(TAG, "onComplete: " + turnosMapa);
                     showTableLayout();
 
                 } else {
@@ -130,6 +131,12 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
         tv6.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv6);
 
+        TextView tv7 = new TextView(this);
+        tv7.setText(" Cantidad material ");
+        tv7.setTextSize(40);
+        tv7.setTextColor(getResources().getColor(R.color.textoNaranja));
+        tv7.setTypeface(null, Typeface.BOLD);
+        tbrow0.addView(tv7);
         //End of Table Headers
         //Add to the tablelayout
         stk.addView(tbrow0);
@@ -175,6 +182,13 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
             t6v.setTextColor(Color.WHITE);
             t6v.setGravity(Gravity.CENTER);
             tbrow.addView(t6v);
+
+            TextView t7v = new TextView(this);
+            t7v.setText(turnosMapa.get(i).getCantidad_material());
+            t7v.setTextColor(Color.WHITE);
+            t7v.setGravity(Gravity.CENTER);
+            tbrow.addView(t7v);
+
 
 
         }

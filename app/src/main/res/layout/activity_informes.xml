@@ -8,7 +8,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvView"
-        android:layout_width="509dp"
+        android:layout_width="300dp"
         android:layout_height="920dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
@@ -19,22 +19,35 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="522dp"
+            android:layout_width="300dp"
             android:layout_height="843dp"
             android:orientation="horizontal">
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
 
+
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
-        android:layout_width="1058dp"
-        android:layout_height="803dp"
+        android:layout_width="839dp"
+        android:layout_height="640dp"
         android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.427" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="683dp"
+        android:layout_height="641dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.975"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

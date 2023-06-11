@@ -8,18 +8,28 @@ public class TurnosModelo {
     private String fecha_inicio;
     private String fecha_fin;
     private String turno;
+    private String cantidad_material;
 
     public TurnosModelo() {
 
     }
 
-    public TurnosModelo(String numero_cargas, String nombre_maquina, String nombre_operario, String fecha_inicio, String fecha_fin, String turno) {
+    public TurnosModelo(String numero_cargas, String nombre_maquina, String nombre_operario, String fecha_inicio, String fecha_fin, String turno, String cantidad_material) {
         this.numero_cargas = numero_cargas;
         this.nombre_maquina = nombre_maquina;
         this.nombre_operario = nombre_operario;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.turno = turno;
+        this.cantidad_material = cantidad_material;
+    }
+
+    public String getCantidad_material() {
+        return cantidad_material;
+    }
+
+    public void setCantidad_material(String cantidad_material) {
+        this.cantidad_material = cantidad_material;
     }
 
     public String getNumero_cargas() {

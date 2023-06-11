@@ -11,7 +11,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -27,6 +31,7 @@ import com.workcontrol.R;
 import com.workcontrol.modelo.InformesModelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class informes extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -65,10 +70,14 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
     public void dibujar() {
         ArrayList<Float> listaFloats = new ArrayList<>();
         PieChart pieChart = findViewById(R.id.pieChart);
+        LineChart lineChart = findViewById(R.id.lineChart);
         ArrayList<PieEntry> pruebaGrafico = new ArrayList<>();
+
+        float contador = 0;
 
         for (int i = 0; i < informesLista.size(); i++) {
             listaFloats.add(informesLista.get(i).getCantidad_material());
+            contador += informesLista.get(i).getCantidad_material();
 
         }
         for (int i = 0; i < listaFloats.size(); i++) {
@@ -85,12 +94,30 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
 
-        PieData pieData = new PieData(pieDataSet);
 
+        PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(true);
-        pieChart.setCenterText("Toneladas extraidas");
-        pieChart.animate();
+        pieChart.animateY(2000);
+        pieChart.setDrawHoleEnabled(false);
+        pieChart.getLegend().setEnabled(false);
+        pieChart.getDescription().setEnabled(false);
+
+        List<Entry> listaEntry = new ArrayList<>();
+        listaEntry.add(new Entry(11,  contador));
+
+        LineDataSet lineDataSet = new LineDataSet(listaEntry, "Toneladas extraidas");
+        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        lineDataSet.setValueTextColor(Color.WHITE);
+        lineDataSet.setValueTextSize(16f);
+
+        LineData lineData = new LineData(lineDataSet);
+        lineChart.setData(lineData);
+        lineChart.getDescription().setEnabled(true);
+        lineChart.animateY(2000);
+        lineChart.getLegend().setEnabled(false);
+        lineChart.getDescription().setEnabled(false);
+
     }
 
 

@@ -8,7 +8,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvView"
-        android:layout_width="509dp"
+        android:layout_width="300dp"
         android:layout_height="920dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="522dp"
+            android:layout_width="300dp"
             android:layout_height="843dp"
             android:orientation="horizontal">
         </LinearLayout>
