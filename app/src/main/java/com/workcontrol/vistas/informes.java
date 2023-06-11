@@ -1,78 +1,87 @@
 package com.workcontrol.vistas;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
+import com.workcontrol.modelo.InformesModelo;
 
 import java.util.ArrayList;
 
 public class informes extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     FirebaseFirestore database;
-
+    public ArrayList<InformesModelo> informesLista = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informes);
         setNavigationViewListener();
-        PieChart pieChart = findViewById(R.id.pieChart);
-//        BarChart barChart = findViewById(R.id.barChart);
-
         database  = FirebaseFirestore.getInstance();
-        // CollectionReference documentReference = database.collection("Informes").get();
+        recuperarDatosDB();
+    }
+
+    public void recuperarDatosDB() {
+        database.collection("Informes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult()) {
+
+                        InformesModelo miObjeto = document.toObject(InformesModelo.class);
+                        informesLista.add(new InformesModelo(miObjeto.getCantidad_material()));
+                    }
+                    dibujar();
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
 
 
+        });
+    }
+
+
+    public void dibujar() {
+        ArrayList<Float> listaFloats = new ArrayList<>();
+        PieChart pieChart = findViewById(R.id.pieChart);
         ArrayList<PieEntry> pruebaGrafico = new ArrayList<>();
-        pruebaGrafico.add(new PieEntry(120, "prueba1"));
-        pruebaGrafico.add(new PieEntry(234, "prueba2"));
-        pruebaGrafico.add(new PieEntry(345,  "prueba3"));
-        pruebaGrafico.add(new PieEntry(3, "prueba4"));
 
-//        ArrayList<BarEntry> pruebaGrafico1 = new ArrayList<>();
-//        pruebaGrafico1.add(new BarEntry(120, 234));
-//        pruebaGrafico1.add(new BarEntry(234, 345));
-//        pruebaGrafico1.add(new BarEntry(345,  34));
-//        pruebaGrafico1.add(new BarEntry(3, 123));
+        for (int i = 0; i < informesLista.size(); i++) {
+            listaFloats.add(informesLista.get(i).getCantidad_material());
 
-//        BarDataSet barDataSet = new BarDataSet(pruebaGrafico1, "Prueba gráfico");
-//        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-//        barDataSet.setValueTextColor(Color.BLACK);
-//        barDataSet.setValueTextSize(16f);
+        }
+        for (int i = 0; i < listaFloats.size(); i++) {
+            pruebaGrafico.add(new PieEntry(listaFloats.get(i), "Toneladas"));
 
-//        BarData barData = new BarData(barDataSet);
-//
-//        barChart.setFitBars(true);
-//        barChart.setData(barData);
-//        barChart.getDescription().setText("Hola");
-//        barChart.animateY(2000);
+        }
 
 
-        PieDataSet pieDataSet = new PieDataSet(pruebaGrafico, "Prueba gráfico");
-        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        Log.d(TAG, "listaFloats" + listaFloats);
+
+
+        PieDataSet pieDataSet = new PieDataSet(pruebaGrafico, "Toneladas extraidas");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(16f);
 
@@ -80,9 +89,10 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
 
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(true);
-        pieChart.setCenterText("Prueba gráfico");
+        pieChart.setCenterText("Toneladas extraidas");
         pieChart.animate();
     }
+
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -124,4 +134,6 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private class COLORES_PERSO {
+    }
 }

@@ -7,17 +7,35 @@ public class UsuarioModelo {
     private String apellido;
     private String correo;
     private String contrasegna;
+    private String prueba;
+
+    public String getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(String prueba) {
+        this.prueba = prueba;
+    }
 
     public UsuarioModelo () {
 
     }
 
-    public UsuarioModelo(String dni, String nombre, String apellido, String correo, String contrasegna) {
+//    public UsuarioModelo(String dni, String nombre, String apellido, String correo, String contrasegna) {
+//        this.dni = dni;
+//        this.nombre = nombre;
+//        this.apellido = apellido;
+//        this.correo = correo;
+//        this.contrasegna = contrasegna;
+//    }
+
+    public UsuarioModelo(String dni, String nombre, String apellido, String correo, String contrasegna, String prueba) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contrasegna = contrasegna;
+        this.prueba = prueba;
     }
 
     public String getDni() {
@@ -63,6 +81,6 @@ public class UsuarioModelo {
     @Override
     public String toString() {
         return "Usuario{" + "dni='" + dni + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' +
-                ", correo='" + correo + '\'' + ", contrasesadgna='" + contrasegna + '\'' + '}';
+                ", correo='" + correo + '\'' + ", contrasesadgna='" + contrasegna + '\'' + ", prueba=' " + prueba + '}';
     }
 }

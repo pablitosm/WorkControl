@@ -106,7 +106,7 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
         // Utiliza la ubicación actualizada como desees
         // Por ejemplo, mostrar las coordenadas en un TextView
-        Log.d(TAG, "Ubicación: Latitud " + latitude + ", Longitud " + longitude);
+        // Log.d(TAG, "Ubicación: Latitud " + latitude + ", Longitud " + longitude);
 
 
         polylinePoints.add(new LatLng(latitude, longitude));

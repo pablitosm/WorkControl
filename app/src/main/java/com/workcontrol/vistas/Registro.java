@@ -1,10 +1,14 @@
 package com.workcontrol.vistas;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,10 +67,12 @@ public class Registro extends AppCompatActivity {
                 String apellido = TextoApellido.getText().toString();
                 String correo = TextoCorreo.getText().toString();
                 String contrasegna = TextoContrasegna.getText().toString();
+                String pruebaCoordenadas = "";
 
                 ValidadorDNI dniValidar = new ValidadorDNI(dni);
 
                 auth.createUserWithEmailAndPassword(correo, contrasegna).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 

@@ -55,6 +55,7 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
 
     }
 
+
     public void recuperarDatosDBPrueba() {
 
         database.collection("Turnos").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

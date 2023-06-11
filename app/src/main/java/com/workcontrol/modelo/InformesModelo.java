@@ -1,21 +1,21 @@
 package com.workcontrol.modelo;
 
 public class InformesModelo {
-    private Number cantidad_material;
+    private Float cantidad_material;
 
     public InformesModelo () {
 
     }
 
-    public InformesModelo(Number cantidad_material) {
+    public InformesModelo(Float cantidad_material) {
         this.cantidad_material = cantidad_material;
     }
 
-    public Number getCantidad_material() {
+    public Float getCantidad_material() {
         return cantidad_material;
     }
 
-    public void setCantidad_material(Number cantidad_material) {
+    public void setCantidad_material(Float cantidad_material) {
         this.cantidad_material = cantidad_material;
     }
 
