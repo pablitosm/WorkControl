@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         textoContrasegna = findViewById(R.id.editTextTextContrasegna);
 
         listaAdmins.add("adriansanmigu@gmail.com");
+        listaAdmins.add("samuel@gmail.com");
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

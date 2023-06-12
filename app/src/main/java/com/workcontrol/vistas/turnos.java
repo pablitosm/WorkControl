@@ -20,6 +20,15 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -49,29 +58,22 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turnos);
-        database = FirebaseFirestore.getInstance();
         setNavigationViewListener();
+        database = FirebaseFirestore.getInstance();
         recuperarDatosDBPrueba();
-
-
     }
 
 
     public void recuperarDatosDBPrueba() {
-
         database.collection("Turnos").orderBy("nombre_operario", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot document : task.getResult()) {
-
                         TurnosModelo miObjeto = document.toObject(TurnosModelo.class);
-
-
                         turnosMapa.add(new TurnosModelo(miObjeto.getNumero_cargas(), miObjeto.getNombre_maquina(),
-                                miObjeto.getNombre_operario(), miObjeto.getFecha_inicio(), miObjeto.getFecha_fin(), miObjeto.getTurno(), miObjeto.getCantidad_material()));
-
-
+                                miObjeto.getNombre_operario(), miObjeto.getFecha_inicio(), miObjeto.getFecha_fin(),
+                                miObjeto.getTurno(), miObjeto.getCantidad_material()));
                    }
                     Log.d(TAG, "onComplete: " + turnosMapa);
                     showTableLayout();
@@ -79,9 +81,19 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
                 } else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
+                dibujar();
             }
+
         });
     }
+
+    private void dibujar() {
+        LineChart lineChart = findViewById(R.id.lineChart1);
+
+        Log.d(TAG, "dibujar: " + turnosMapa);
+    }
+
+
 
     public void showTableLayout() {
 
@@ -184,13 +196,10 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
             tbrow.addView(t6v);
 
             TextView t7v = new TextView(this);
-            t7v.setText(turnosMapa.get(i).getCantidad_material());
+            t7v.setText(turnosMapa.get(i).getCantidad_material() + " tm");
             t7v.setTextColor(Color.WHITE);
             t7v.setGravity(Gravity.CENTER);
             tbrow.addView(t7v);
-
-
-
         }
 
     }

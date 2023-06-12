@@ -1,12 +1,14 @@
 package com.workcontrol.vistas;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,6 +19,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -36,19 +39,29 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.RoundCap;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
+import com.workcontrol.modelo.MaquinariaModelo;
+import com.workcontrol.modelo.UsuarioModelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
-
-
+    FirebaseAuth auth;
+    FirebaseFirestore database;
+    String UserId;
     private GoogleMap mMap;
     GroundOverlay groundOverlay;
 
@@ -56,7 +69,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
     private static final String TAG = "MainActivity";
     int LOCATION_REQUEST_CODE = 10001;
-
     LocationManager locationManager;
     LocationListener locationListener;
     LatLng userLatLong;
@@ -69,14 +81,32 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
+        auth = FirebaseAuth.getInstance();
+        UserId = auth.getCurrentUser().getUid();
+
+        Log.d(TAG, "userid: " + UserId);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
         InicioAdmin.context = getApplicationContext();
         setNavigationViewListener();
+
+        database = FirebaseFirestore.getInstance();
+        database.collection("Users").document(UserId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String usuario = documentSnapshot.getString("usuario");
+                String contrasegna = documentSnapshot.getString("contrasegna");
+
+                getSupportActionBar().setSubtitle("Bienvenido " + usuario);
+
+            }
+        });
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -88,7 +118,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
             // Los permisos no están concedidos, solicitarlos al usuario
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
         }
-
     }
 
     private void startLocationUpdates() {
