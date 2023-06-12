@@ -80,11 +80,12 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful() && listaAdmins.contains(correoR)) {
                                     startActivity(new Intent(MainActivity.this, InicioAdmin.class));
                                     Toast.makeText(getApplicationContext(), "Logeado como administrador", Toast.LENGTH_LONG).show();
-                                } else if (auth.fetchSignInMethodsForEmail(correoR) == null) {
-                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
-                                } else {
+                                } else if (task.isSuccessful() && !listaAdmins.contains(correoR)) {
                                     startActivity(new Intent(MainActivity.this, InicioUsuario.class));
                                     Toast.makeText(getApplicationContext(), "Logeado como operario", Toast.LENGTH_LONG).show();
+                                }
+                                if (auth.fetchSignInMethodsForEmail(correoR) == null) {
+                                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

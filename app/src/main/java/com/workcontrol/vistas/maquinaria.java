@@ -32,14 +32,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 import com.workcontrol.modelo.MaquinariaModelo;
-import com.workcontrol.modelo.TurnosModelo;
-import com.workcontrol.modelo.UsuarioModelo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class maquinaria extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -130,7 +126,7 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
             tbrow.addView(t4v);
 
             TextView t5v = new TextView(this);
-            t5v.setText(maquinariaMapa.get(i).getPotencia());
+            t5v.setText(maquinariaMapa.get(i).getPotencia() + " cv" + " | " + Math.floor((Integer.parseInt(maquinariaMapa.get(i).getPotencia()) * 0.7355))   + " kw");
             t5v.setTextColor(Color.WHITE);
             t5v.setGravity(Gravity.CENTER);
             tbrow.addView(t5v);
@@ -165,7 +161,7 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
     }
 
     private void dibujar() {
-        LineChart lineChart = findViewById(R.id.lineChart1);
+        LineChart lineChart = findViewById(R.id.hola);
 
         Log.d(TAG, "maquinariaaaa: " + maquinariaMapa);
 

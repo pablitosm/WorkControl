@@ -7,8 +7,21 @@
     android:background="#343434"
     tools:context=".vistas.maquinaria">
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horas de uso de cada máquina"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.276"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429" />
+
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart1"
+        android:id="@+id/hola"
         android:layout_width="1399dp"
         android:layout_height="483dp"
         android:backgroundTint="@color/black"
@@ -21,8 +34,8 @@
 
     <ScrollView
         android:id="@+id/scrollview1"
-        android:layout_width="1400dp"
-        android:layout_height="417dp"
+        android:layout_width="1397dp"
+        android:layout_height="341dp"
         android:layout_alignParentLeft="true"
         android:background="#343434"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,6 +87,5 @@
             android:orientation="horizontal">
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -189,7 +189,7 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
         lineChart.getDescription().setEnabled(true);
-        lineChart.getDescription().setText("Total toneladas extraidas diarias");
+        lineChart.getDescription().setText("Total toneladas extraidas por día");
         lineChart.animateY(2000);
         lineChart.getLegend().setTextColor(Color.WHITE);
         lineChart.getDescription().setTextColor(Color.WHITE);

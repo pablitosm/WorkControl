@@ -4,12 +4,9 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,13 +18,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,23 +33,16 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
-import com.workcontrol.adaptador.TurnosAdaptador;
 import com.workcontrol.modelo.TurnosModelo;
-import com.workcontrol.modelo.UsuarioModelo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class turnos extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseFirestore database;
-
     public List<TurnosModelo> turnosMapa = new ArrayList<>();
-
+    public List<Entry> listaEntry = new ArrayList<>();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turnos);
@@ -88,9 +76,36 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
     }
 
     private void dibujar() {
-        LineChart lineChart = findViewById(R.id.lineChart1);
+        LineChart lineChart = findViewById(R.id.adios);
 
-        Log.d(TAG, "dibujar: " + turnosMapa);
+        Log.d(TAG, "maquinariaaaa: " + turnosMapa);
+
+        for (int i = 0; i < turnosMapa.size(); i++) {
+            listaEntry.add(new Entry(i, Float.parseFloat(turnosMapa.get(i).getNumero_cargas())));
+        }
+
+        Log.d(TAG, "listaEntry: " + listaEntry);
+
+        LineDataSet lineDataSet = new LineDataSet(listaEntry, "Horas de uso");
+        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        lineDataSet.setValueTextColor(Color.WHITE);
+        lineDataSet.setValueTextSize(16f);
+        lineDataSet.setDrawCircles(false);
+        lineDataSet.setLineWidth(5f);
+
+        LineData lineData = new LineData(lineDataSet);
+        lineChart.setData(lineData);
+        lineChart.getDescription().setEnabled(true);
+        lineChart.getDescription().setText("Horas de uso");
+        lineChart.animateY(2000);
+        lineChart.getLegend().setTextColor(Color.WHITE);
+        lineChart.getDescription().setTextColor(Color.WHITE);
+
+        XAxis xAxis = lineChart.getXAxis();
+        YAxis yAxis = lineChart.getAxisLeft();
+
+        xAxis.setTextColor(Color.WHITE);
+        yAxis.setTextColor(Color.WHITE);
     }
 
 

@@ -4,7 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#343434"
     tools:context=".vistas.panel_control">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de cargas de cada empleado"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.397" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/adios"
+        android:layout_width="1387dp"
+        android:layout_height="509dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvView"
@@ -27,10 +53,10 @@
 
     <ScrollView
         android:id="@+id/scrollview1"
-        android:layout_width="1408dp"
-        android:layout_height="915dp"
+        android:layout_width="1395dp"
+        android:layout_height="314dp"
         android:layout_alignParentLeft="true"
-        android:background="#292929"
+        android:background="#343434"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
