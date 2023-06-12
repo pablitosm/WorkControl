@@ -118,12 +118,12 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
         database.collection("TotalMaterial").add(datosTotalMaterial).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
-                Toast.makeText(getApplicationContext(), "datos añadidos correctamente amigo", Toast.LENGTH_LONG).show();
+                Log.d(TAG, "onComplete: Datos añadidos correctamente" );
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: FALLO GORDO OMG");
+                Log.d(TAG, "onFailure: Error al registrar datos en base de datos");
             }
         });
 
@@ -144,13 +144,13 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
                     graficoLineas();
                     // aquiii
                 } else {
-                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    Log.d(TAG, "Error al obtener documento/s: ", task.getException());
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: FALLO GORDO OMG");
+                Log.d(TAG, "onFailure: Fallo al obtener documentos");
             }
         });
 
