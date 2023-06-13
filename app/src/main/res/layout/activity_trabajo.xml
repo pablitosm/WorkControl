@@ -6,6 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".vistas.trabajo">
 
+    <EditText
+        android:id="@+id/editTextMinPaladas"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_document"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="paladas minimas"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254" />
+
+    <EditText
+        android:id="@+id/editTextMandarTrabajo"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_document"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="escriba el id del trabajador"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.151" />
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvView"
         android:layout_width="300dp"
@@ -24,5 +62,17 @@
             android:orientation="horizontal">
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
+
+    <Button
+        android:id="@+id/buttonMandarTrabajo"
+        android:layout_width="499dp"
+        android:layout_height="67dp"
+        android:text="Mandar trabajo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.353" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
