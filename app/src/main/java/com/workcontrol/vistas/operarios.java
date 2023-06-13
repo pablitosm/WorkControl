@@ -13,9 +13,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -27,6 +30,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -45,14 +50,40 @@ public class operarios extends AppCompatActivity implements NavigationView.OnNav
     public List<OperariosModelo> operariosMapa = new ArrayList<>();
     public List<Entry> listaEntry = new ArrayList<>();
 
+    Button buttonNuevoOperario;
+    Button buttonEliminarOperario;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         database = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_operarios);
 
+        buttonNuevoOperario = findViewById(R.id.buttonNuevoOperario);
+        buttonEliminarOperario = findViewById(R.id.buttonEliminarOperario);
+
         setNavigationViewListener();
         recuperarDatosDBPrueba();
+
+        buttonNuevoOperario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toast.makeText(getApplicationContext(), "agandir", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(operarios.this, agnadirOperario.class));
+            }
+        });
+
+        buttonEliminarOperario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toast.makeText(getApplicationContext(), "eliminar", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(operarios.this, eliminarOperario.class));
+
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -191,7 +222,7 @@ public class operarios extends AppCompatActivity implements NavigationView.OnNav
 
         Log.d(TAG, "listaEntry: " + listaEntry);
 
-        LineDataSet lineDataSet = new LineDataSet(listaEntry, "Horas de uso");
+        LineDataSet lineDataSet = new LineDataSet(listaEntry, "Salario de cada empleado");
         lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         lineDataSet.setValueTextColor(Color.WHITE);
         lineDataSet.setValueTextSize(16f);
@@ -201,7 +232,7 @@ public class operarios extends AppCompatActivity implements NavigationView.OnNav
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
         lineChart.getDescription().setEnabled(true);
-        lineChart.getDescription().setText("Horas de uso");
+        lineChart.getDescription().setText("Salario de cada empleado");
         lineChart.animateY(2000);
         lineChart.getLegend().setTextColor(Color.WHITE);
         lineChart.getDescription().setTextColor(Color.WHITE);
@@ -219,9 +250,6 @@ public class operarios extends AppCompatActivity implements NavigationView.OnNav
 
             case R.id.mapa:
                 startActivity(new Intent(operarios.this, InicioAdmin.class));
-                break;
-            case R.id.panel_control:
-                startActivity(new Intent(operarios.this, panel_control.class));
                 break;
             case R.id.iniciar_trabajo:
                 startActivity(new Intent(operarios.this, trabajo.class));

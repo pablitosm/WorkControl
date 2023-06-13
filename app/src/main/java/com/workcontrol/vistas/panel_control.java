@@ -26,9 +26,6 @@ public class panel_control extends AppCompatActivity implements NavigationView.O
             case R.id.mapa:
                 startActivity(new Intent(panel_control.this, InicioAdmin.class));
                 break;
-            case R.id.panel_control:
-                startActivity(new Intent(panel_control.this, panel_control.class));
-                break;
             case R.id.iniciar_trabajo:
                 startActivity(new Intent(panel_control.this, trabajo.class));
                 break;

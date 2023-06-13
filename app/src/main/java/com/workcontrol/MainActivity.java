@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Log.d(TAG, "onComplete: " + correoR + contrasegnaR);
-                                if (task.isSuccessful() && listaAdmins.contains(correoR)) {
+                                if (task.isSuccessful() && listaAdmins.contains(correoR.toLowerCase())) {
                                     startActivity(new Intent(MainActivity.this, InicioAdmin.class));
                                     Toast.makeText(getApplicationContext(), "Logeado como administrador", Toast.LENGTH_LONG).show();
-                                } else if (task.isSuccessful() && !listaAdmins.contains(correoR)) {
+                                } else if (task.isSuccessful() && !listaAdmins.contains(correoR.toLowerCase())) {
                                     startActivity(new Intent(MainActivity.this, InicioUsuario.class));
                                     Toast.makeText(getApplicationContext(), "Logeado como operario", Toast.LENGTH_LONG).show();
                                 }

@@ -9,10 +9,6 @@
             android:icon="@drawable/baseline_map"
             android:background="#292929"
             android:title="Mapa"/>
-        <item android:id="@+id/panel_control"
-            android:icon="@drawable/baseline_control_panel"
-            android:background="#292929"
-            android:title="Panel de control"/>
 
         <item android:id="@+id/iniciar_trabajo"
             android:icon="@drawable/baseline_trabajo"
@@ -48,6 +44,8 @@
     <group android:id="@+id/main_drawer_menu2" android:checkableBehavior="single" >
 
 
+        <item
+            android:title=""/>
         <item
             android:title=""/>
         <item

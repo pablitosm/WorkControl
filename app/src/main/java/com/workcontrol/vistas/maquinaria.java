@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -43,11 +44,16 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
     public List<MaquinariaModelo> maquinariaMapa = new ArrayList<>();
     public List<Entry> listaEntry = new ArrayList<>();
 
+    Button buttonAgnadirMaquineto, buttonEliminarMaquineto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         database = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_maquinaria);
+
+        buttonAgnadirMaquineto = findViewById(R.id.buttonAgnadirMaquineto);
+        buttonEliminarMaquineto = findViewById(R.id.buttonEliminarMaquineto);
 
         setNavigationViewListener();
         recuperarDatosDBPrueba();
@@ -198,9 +204,6 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
 
             case R.id.mapa:
                 startActivity(new Intent(maquinaria.this, InicioAdmin.class));
-                break;
-            case R.id.panel_control:
-                startActivity(new Intent(maquinaria.this, panel_control.class));
                 break;
             case R.id.iniciar_trabajo:
                 startActivity(new Intent(maquinaria.this, trabajo.class));

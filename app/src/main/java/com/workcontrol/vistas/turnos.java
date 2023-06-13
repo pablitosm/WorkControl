@@ -27,6 +27,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -43,6 +44,9 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
     FirebaseFirestore database;
     public List<TurnosModelo> turnosMapa = new ArrayList<>();
     public List<Entry> listaEntry = new ArrayList<>();
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turnos);
@@ -86,7 +90,7 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
 
         Log.d(TAG, "listaEntry: " + listaEntry);
 
-        LineDataSet lineDataSet = new LineDataSet(listaEntry, "Horas de uso");
+        LineDataSet lineDataSet = new LineDataSet(listaEntry, "Numero de cargas");
         lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         lineDataSet.setValueTextColor(Color.WHITE);
         lineDataSet.setValueTextSize(16f);
@@ -96,7 +100,7 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
         lineChart.getDescription().setEnabled(true);
-        lineChart.getDescription().setText("Horas de uso");
+        lineChart.getDescription().setText("Numero de cargas");
         lineChart.animateY(2000);
         lineChart.getLegend().setTextColor(Color.WHITE);
         lineChart.getDescription().setTextColor(Color.WHITE);
@@ -226,9 +230,6 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
             case R.id.mapa:
                 startActivity(new Intent(turnos.this, InicioAdmin.class));
                 break;
-            case R.id.panel_control:
-                startActivity(new Intent(turnos.this, panel_control.class));
-                break;
             case R.id.iniciar_trabajo:
                 startActivity(new Intent(turnos.this, trabajo.class));
                 break;
@@ -239,7 +240,6 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
             case R.id.turnos:
                 startActivity(new Intent(turnos.this, turnos.class));
                 break;
-
             case R.id.maquinaria:
                 startActivity(new Intent(turnos.this, maquinaria.class));
                 break;

@@ -26,9 +26,6 @@ public class trabajo extends AppCompatActivity implements NavigationView.OnNavig
             case R.id.mapa:
                 startActivity(new Intent(trabajo.this, InicioAdmin.class));
                 break;
-            case R.id.panel_control:
-                startActivity(new Intent(trabajo.this, panel_control.class));
-                break;
             case R.id.iniciar_trabajo:
                 startActivity(new Intent(trabajo.this, trabajo.class));
                 break;

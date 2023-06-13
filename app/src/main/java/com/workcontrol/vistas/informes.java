@@ -207,10 +207,7 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
             case R.id.mapa:
                 startActivity(new Intent(informes.this, InicioAdmin.class));
                 break;
-            case R.id.panel_control:
-                startActivity(new Intent(informes.this, panel_control.class));
-                break;
-            case R.id.iniciar_trabajo:
+                case R.id.iniciar_trabajo:
                 startActivity(new Intent(informes.this, trabajo.class));
                 break;
 
