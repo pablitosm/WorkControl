@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -57,6 +58,20 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
 
         setNavigationViewListener();
         recuperarDatosDBPrueba();
+
+        buttonAgnadirMaquineto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(maquinaria.this, agnadirMaquina.class));
+            }
+        });
+
+        buttonEliminarMaquineto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(maquinaria.this, eliminarMaquina.class));
+            }
+        });
     }
 
     public void showTableLayout() {
