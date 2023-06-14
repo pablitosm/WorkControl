@@ -59,6 +59,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
 
     @Override
     public void onClick(View v) {
+        if (listener!=null) {
+            listener.onClick(v);
+        }
 
     }
 
