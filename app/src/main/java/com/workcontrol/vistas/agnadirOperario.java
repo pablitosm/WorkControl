@@ -13,11 +13,9 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 
 import java.util.HashMap;
@@ -28,7 +26,6 @@ public class agnadirOperario extends AppCompatActivity {
     EditText fechaContrato, nombreMaquina, nombreOperario, numeroEmpleado, puestoTrabajo, salario;
     Button buttonRegistrar, button2;
 
-    FirebaseAuth auth;
     FirebaseFirestore database;
 
     @Override

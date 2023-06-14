@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -35,7 +36,6 @@ import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 import com.workcontrol.modelo.MaquinariaModelo;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +74,7 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public void showTableLayout() {
 
         TableLayout stk = (TableLayout) findViewById(R.id.table_main1);  //Table layout
@@ -167,8 +168,10 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
 
                             MaquinariaModelo miObjeto = document.toObject(MaquinariaModelo.class);
 
-                            maquinariaMapa.add(new MaquinariaModelo(miObjeto.getFecha_fabricacion(), miObjeto.getHoras_uso(),
-                                    miObjeto.getMatricula(), miObjeto.getNombre_maquina(), miObjeto.getPotencia()));
+                            if (miObjeto != null) {
+                                maquinariaMapa.add(new MaquinariaModelo(miObjeto.getFecha_fabricacion(), miObjeto.getHoras_uso(),
+                                        miObjeto.getMatricula(), miObjeto.getNombre_maquina(), miObjeto.getPotencia()));
+                            }
 
                         }
                         Log.d(TAG, "onComplete: " + maquinariaMapa);
@@ -214,6 +217,7 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
         yAxis.setTextColor(Color.WHITE);
     }
 
+    @SuppressLint("NonConstantResourceId")
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
@@ -230,7 +234,6 @@ public class maquinaria extends AppCompatActivity implements NavigationView.OnNa
             case R.id.turnos:
                 startActivity(new Intent(maquinaria.this, turnos.class));
                 break;
-
             case R.id.maquinaria:
                 startActivity(new Intent(maquinaria.this, maquinaria.class));
                 break;

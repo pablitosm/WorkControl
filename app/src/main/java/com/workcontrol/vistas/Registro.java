@@ -1,14 +1,12 @@
 package com.workcontrol.vistas;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +18,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
-import com.workcontrol.validardni.ValidadorDNI;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,9 +31,6 @@ public class Registro extends AppCompatActivity {
 
     EditText TextoDNI, TextoNombre, TextoApellido, TextoCorreo, TextoContrasegna;
     Button buttonRegistrar;
-
-    FirebaseDatabase nodoRaiz;
-    DatabaseReference referencia;
 
     FirebaseAuth auth;
     FirebaseFirestore database;
@@ -67,9 +60,8 @@ public class Registro extends AppCompatActivity {
                 String apellido = TextoApellido.getText().toString();
                 String correo = TextoCorreo.getText().toString();
                 String contrasegna = TextoContrasegna.getText().toString();
-                String pruebaCoordenadas = "";
 
-                ValidadorDNI dniValidar = new ValidadorDNI(dni);
+                // ValidadorDNI dniValidar = new ValidadorDNI(dni);
 
                 auth.createUserWithEmailAndPassword(correo, contrasegna).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @SuppressLint("RestrictedApi")

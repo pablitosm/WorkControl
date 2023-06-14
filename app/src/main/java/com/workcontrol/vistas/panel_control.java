@@ -3,6 +3,7 @@ package com.workcontrol.vistas;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ public class panel_control extends AppCompatActivity implements NavigationView.O
         setNavigationViewListener();
     }
 
+    @SuppressLint("NonConstantResourceId")
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 

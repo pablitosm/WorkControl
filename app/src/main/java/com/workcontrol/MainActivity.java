@@ -80,7 +80,11 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful() && listaAdmins.contains(correoR.toLowerCase())) {
                                     startActivity(new Intent(MainActivity.this, InicioAdmin.class));
                                     Toast.makeText(getApplicationContext(), "Logeado como administrador", Toast.LENGTH_LONG).show();
-                                } else if (task.isSuccessful() && !listaAdmins.contains(correoR.toLowerCase())) {
+                                } else if (!task.isSuccessful()){
+                                    Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+                                }
+
+                                if (task.isSuccessful() && !listaAdmins.contains(correoR.toLowerCase())) {
                                     startActivity(new Intent(MainActivity.this, InicioUsuario.class));
                                     Toast.makeText(getApplicationContext(), "Logeado como operario", Toast.LENGTH_LONG).show();
                                 }

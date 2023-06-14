@@ -1,14 +1,12 @@
 package com.workcontrol.vistas;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,11 +17,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -31,7 +26,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CustomCap;
 import com.google.android.gms.maps.model.GroundOverlay;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -39,19 +33,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.RoundCap;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
+
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.workcontrol.MainActivity;
 import com.workcontrol.R;
-import com.workcontrol.modelo.MaquinariaModelo;
-import com.workcontrol.modelo.UsuarioModelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,9 +62,9 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
     LocationListener locationListener;
     LatLng userLatLong;
 
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
 
-    private FusedLocationProviderClient fusedLocationClient;
     public final List<LatLng> polylinePoints = new ArrayList<>();
 
     @Override
@@ -83,7 +72,7 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
 
 
         auth = FirebaseAuth.getInstance();
-        UserId = auth.getCurrentUser().getUid();
+        UserId = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
         Log.d(TAG, "userid: " + UserId);
         super.onCreate(savedInstanceState);
@@ -101,9 +90,9 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String usuario = documentSnapshot.getString("usuario");
-                String contrasegna = documentSnapshot.getString("contrasegna");
+                // String contrasegna = documentSnapshot.getString("contrasegna");
 
-                getSupportActionBar().setSubtitle("Bienvenido " + usuario);
+                Objects.requireNonNull(getSupportActionBar()).setSubtitle("Bienvenido " + usuario);
 
             }
         });
@@ -150,11 +139,6 @@ public class InicioAdmin extends AppCompatActivity implements OnMapReadyCallback
                 .width(10));
 
         polyline.setStartCap(new RoundCap());
-//         polyline.setEndCap();
-//        polyline.setEndCap(
-//                new CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.arrow),
-//                        16));
-
 
     }
 

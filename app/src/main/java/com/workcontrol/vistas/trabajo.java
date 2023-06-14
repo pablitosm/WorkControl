@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -70,38 +72,40 @@ public class trabajo extends AppCompatActivity implements NavigationView.OnNavig
                             listaCosasOperarios.put("nombre_operario", nombreOperario);
                         }
 
+                        Calendar calendar = Calendar.getInstance();
+                        int dia = calendar.get(Calendar.DAY_OF_MONTH);
+                        int mes = calendar.get(Calendar.MONTH);
+                        int anio = calendar.get(Calendar.YEAR);
+
                         Map<String, Object> datosOperarios = new HashMap<>();
-                        datosOperarios.put("fecha_trabajo", new Date(2002 - 1901, 12, 20));
+                        datosOperarios.put("fecha_trabajo", new Date(anio - 1901, mes, dia));
                         datosOperarios.put("minimo_paladas", editTextMinPaladas.getText().toString());
                         datosOperarios.put("nombre_maquina", listaCosasOperarios.get("nombre_maquina"));
                         datosOperarios.put("nombre_operario", listaCosasOperarios.get("nombre_operario"));
                         datosOperarios.put("ubicacion", "");
-
-                        Log.d(TAG, "mapa datos a ver si va: " + datosOperarios);
+                        datosOperarios.put("estado_trabajo", "En progreso");
 
                         db.collection("trabajosOperarios").add(datosOperarios).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(getApplicationContext(), listaCosasOperarios.get("nombre_operario") + " trabajo registrado correctamente", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Trabajo enviado a " + listaCosasOperarios.get("nombre_operario") + " correctamente" , Toast.LENGTH_LONG).show();
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Error al registrar operario", Toast.LENGTH_LONG).show();
                             }
                         });
-
                     } else {
                         Log.d(TAG, "Error al obtener los operarios: ", task.getException());
                     }
                 });
-
-
             }
         });
     }
 
+    @SuppressLint("NonConstantResourceId")
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 

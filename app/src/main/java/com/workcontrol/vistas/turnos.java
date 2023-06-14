@@ -114,6 +114,7 @@ public class turnos extends AppCompatActivity implements NavigationView.OnNaviga
 
 
 
+    @SuppressLint("SetTextI18n")
     public void showTableLayout() {
 
         TableLayout stk = (TableLayout) findViewById(R.id.table_main);  //Table layout

@@ -72,7 +72,9 @@ public class informes extends AppCompatActivity implements NavigationView.OnNavi
                     for (DocumentSnapshot document : task.getResult()) {
 
                         InformesModelo miObjeto = document.toObject(InformesModelo.class);
-                        informesLista.add(new InformesModelo(miObjeto.getCantidad_material()));
+                        if (miObjeto != null) {
+                            informesLista.add(new InformesModelo(miObjeto.getCantidad_material()));
+                        }
                     }
                     dibujar();
 
