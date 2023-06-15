@@ -69,17 +69,17 @@ public class trabajoEnCurso extends AppCompatActivity {
         textViewLlevas = findViewById(R.id.textViewLlevas);
         textViewQuedan = findViewById(R.id.textViewQuedan);
         textViewToneladas = findViewById(R.id.textViewToneladas);
-        textViewNombreOper = findViewById(R.id.textViewNombreOper);
         buttonEnviarPaladas = findViewById(R.id.buttonEnviarPaladas);
 
         editTextRegistrarPaladas = findViewById(R.id.editTextRegistrarPaladas);
-
+        textViewQuedan.setText("Te quedan " + listaElemento.get(0).getMinimo_paladas());
+        textViewToneladas.setText("0 tm");
         buttonEnviarPaladas.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
 
-                textViewNombreOper.setText("Bienvenido " + listaElemento.get(0).getNombre_operario());
+
 
                 Log.d(TAG, "listaElemento: " + listaElemento);
 
@@ -92,8 +92,12 @@ public class trabajoEnCurso extends AppCompatActivity {
 
                 contadorPaladas += paladasDouble;
 
+
+
 //                contadorPaladas = Integer.parseInt(paladas)  + contadorPaladas;
-//                textViewLlevas.setText(contadorPaladas);
+                textViewLlevas.setText("Llevas  " +  (int) contadorPaladas + " paladas");
+
+                textViewToneladas.setText( (contadorPaladas * 2) + " tm");
 
                 if (contadorPaladas >= minimoPaladasDouble) {
 
@@ -172,6 +176,15 @@ public class trabajoEnCurso extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
                         }
+                    });
+
+                    Map<String, Number> informe = new HashMap<>();
+                    informe.put("cantidad_material", contadorPaladas);
+
+                    database.collection("Informes").add(informe).addOnSuccessListener(documentReference -> {
+                                Log.d(TAG, "Agregado correctamente");
+                    }).addOnFailureListener(e -> {
+                                Log.d(TAG, "Error al agregar datos a la base de datos");
                     });
 
 

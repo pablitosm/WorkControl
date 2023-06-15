@@ -47,6 +47,7 @@
                     android:id="@+id/textViewPaladas"
                     android:layout_width="1313dp"
                     android:layout_height="47dp"
+                    android:textColor="@color/textoNaranja"
                     android:text="Minimo de paladas a realizar"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -62,6 +63,7 @@
                     android:layout_width="1313dp"
                     android:layout_height="47dp"
                     android:text="Fecha"
+
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -95,12 +97,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.669" />
+
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textViewEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textoNaranja"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="6dp"
                 android:layout_marginRight="6dp"

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.workcontrol.MainActivity;
 import com.workcontrol.R;
 import com.workcontrol.modelo.UsuarioModelo;
 
@@ -35,12 +37,23 @@ public class InicioUsuario extends AppCompatActivity {
     public List<ListElement> trabajosMapa = new ArrayList<>();
     public List<UsuarioModelo> usuariosMapa = new ArrayList<>();
 
+    Button buttonVolver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_usuario);
         recuperarDatosDB();
+
+        buttonVolver = findViewById(R.id.buttonVolver);
+
+        buttonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(InicioUsuario.this, MainActivity.class));
+            }
+        });
 
     }
 
@@ -102,7 +115,7 @@ public class InicioUsuario extends AppCompatActivity {
 
 
                     Log.d(TAG, "usuariosMapa: " + usuariosMapa.get(0).getNombre() + " " + usuariosMapa.get(0).getApellido());
-
+                    Objects.requireNonNull(getSupportActionBar()).setSubtitle("Bienvenido " + usuariosMapa.get(0).getNombre());
 
                 } else {
                     System.out.println("No se encontró el documento con ID: " + currentUser);
@@ -117,6 +130,8 @@ public class InicioUsuario extends AppCompatActivity {
                 Log.d(TAG, "onFailure: Fallo al o");
             }
         });
+
+
 
 
     }

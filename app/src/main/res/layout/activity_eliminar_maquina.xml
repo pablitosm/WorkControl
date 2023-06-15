@@ -15,7 +15,7 @@
         android:drawableStart="@drawable/baseline_maquinaria"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Horas de uso"
+        android:hint="Matricula de la maquina"
         android:inputType="text"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"

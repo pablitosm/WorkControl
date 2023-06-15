@@ -4,26 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#343434"
     tools:context=".vistas.trabajo">
 
-    <EditText
-        android:id="@+id/editTextMinPaladas"
-        android:layout_width="500dp"
-        android:layout_height="70dp"
-        android:background="@drawable/custom_imput"
-        android:drawableStart="@drawable/baseline_document"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="paladas minimas"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar un trabajo a un empleado"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.637"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="0.42" />
+
+    <ScrollView
+        android:id="@+id/scrollview23"
+        android:layout_width="1397dp"
+        android:layout_height="341dp"
+        android:layout_alignParentLeft="true"
+        android:background="#343434"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <HorizontalScrollView
+            android:id="@+id/hsscrll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/table_main2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp">
+
+                </TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 
     <EditText
         android:id="@+id/editTextMandarTrabajo"
@@ -33,16 +65,49 @@
         android:drawableStart="@drawable/baseline_document"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="escriba el id del trabajador"
+        android:hint="Escriba el id del trabajador"
         android:inputType="text"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.645"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintVertical_bias="0.523" />
+
+    <EditText
+        android:id="@+id/editTextMinPaladas"
+        android:layout_width="500dp"
+        android:layout_height="70dp"
+        android:background="@drawable/custom_imput"
+        android:drawableStart="@drawable/baseline_document"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Paladas minimas"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627" />
+
+    <Button
+        android:id="@+id/buttonMandarTrabajo"
+        android:layout_width="499dp"
+        android:layout_height="67dp"
+        android:backgroundTint="#EDA341"
+        android:text="Mandar trabajo"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.643"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.726" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nvView"
@@ -62,17 +127,5 @@
             android:orientation="horizontal">
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
-
-    <Button
-        android:id="@+id/buttonMandarTrabajo"
-        android:layout_width="499dp"
-        android:layout_height="67dp"
-        android:text="Mandar trabajo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

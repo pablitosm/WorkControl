@@ -16,23 +16,6 @@
         app:srcCompat="@drawable/myta" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="149dp"
-        android:layout_height="85dp"
-        android:fontFamily="sans-serif-black"
-        android:text="WORK"
-        android:textColor="@color/textoNaranja"
-        android:textColorHint="#000000"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
-        tools:text="WORK" />
-
-    <TextView
         android:id="@+id/textView5"
         android:layout_width="226dp"
         android:layout_height="104dp"
@@ -43,22 +26,27 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.706"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.947"
         tools:text="CONTROL" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="122dp"
-        android:layout_height="111dp"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="149dp"
+        android:layout_height="85dp"
+        android:fontFamily="sans-serif-black"
+        android:text="WORK"
+        android:textColor="@color/textoNaranja"
+        android:textColorHint="#000000"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333"
-        app:srcCompat="@drawable/casco" />
+        app:layout_constraintVertical_bias="0.157"
+        tools:text="WORK" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
