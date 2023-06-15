@@ -8,6 +8,8 @@ android {
     namespace 'com.workcontrol'
     compileSdk 33
 
+
+
     defaultConfig {
         applicationId "com.workcontrol"
         minSdk 33
@@ -49,13 +51,18 @@ android {
     }
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation "io.grpc:grpc-okhttp:1.32.2"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.firebase:firebase-database:20.2.0'
+
     implementation 'com.google.firebase:firebase-auth-ktx:21.3.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
@@ -73,7 +80,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.google.firebase:firebase-database:20.2.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+//    implementation 'com.google.firebase:firebase-firestore:24.6.1'
+
     implementation platform('androidx.compose:compose-bom:2022.10.00')
 
     testImplementation 'junit:junit:4.13.2'
@@ -82,17 +93,12 @@ dependencies {
 
     //
 
-    // FirebaseUI for Firebase Realtime Database
-    implementation 'com.firebaseui:firebase-ui-database:8.0.2'
-
     // FirebaseUI for Cloud Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
 
     // FirebaseUI for Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
 
-    // FirebaseUI for Cloud Storage
-    implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
     androidTestImplementation platform('androidx.compose:compose-bom:2023.03.00')
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
