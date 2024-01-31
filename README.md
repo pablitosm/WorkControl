@@ -83,3 +83,46 @@ A continuación, vamos a dar de baja esta nueva máquina que hemos creado, para 
 
 ![Descripción de la imagen](./images-md/10.png)
 [^1]:Figura 10. (Pantalla de eliminar máquina)
+
+Para eliminar una máquina, solo es necesario introducir la matrícula de esta, por ello, introducimos
+la matrícula de la máquina que queremos eliminar y hacemos clic sobre el botón llamado “eliminar”.
+Tras hacer clic en el botón, se nos redirigirá nuevamente a la pantalla de maquinaria y habremos eliminado la máquina que habíamos dado de alta anteriormente.
+Ahora, vamos a hacer clic en la siguiente opción del menú, operarios.
+Hacemos clic en el apartado de operarios del menú, se nos abrirá la pantalla de operarios.
+
+![Descripción de la imagen](./images-md/11.png)
+[^1]:Figura 11. (Pantalla de operarios)
+
+Esta pantalla es bastante similar a la pantalla de maquinaria, dado que la pantalla es la misma, pero contiene otros datos, en este caso, los datos de los diferentes operarios, también contiene los dos botones de “nuevo operario” y “eliminar operario”, vamos a suponer que queremos dar de alta un nuevo operario, para ello, como en la pantalla anterior, hacemos clic en el botón de “nuevo operario”.
+
+![Descripción de la imagen](./images-md/12.png)
+[^1]:Figura 12. (Pantalla de añadir operario)
+
+Nuevamente, introducimos los datos del operario que queremos dar de alta y hacemos clic sobre el botón de registrar.
+Una vez hecho el clic sobre el botón, si el usuario se ha registrado correctamente se nos redirigirá a la pantalla de operarios y se habrá agregado este nuevo operario a la base de datos, mostrándose en la tabla y en el gráfico.
+Ahora, como en la pantalla anterior, vamos a suponer que queremos eliminar el operario que acabamos de crear, para ello, nos dirigimos en este caso, al botón llamado “eliminar operario” y hacemos clic sobre él.
+
+![Descripción de la imagen](./images-md/13.png)
+[^1]:Figura 13. (Pantalla de eliminar operario)
+
+En esta pantalla, al igual que en la anterior pantalla de eliminación de máquinas, introducimos el id del empleado que queremos eliminar y hacemos clic sobre el botón “eliminar”, si todo ha ido correctamente se redirigirá nuevamente a la pantalla de operarios, el operario se habrá eliminado de la base de datos por lo que no aparecerá en la tabla ni en el gráfico.
+También existe la pantalla llamada “iniciar trabajo”, en la cual, podemos mandar diferentes trabajos a los empleados.
+Para entrar en ella hacemos clic en el menú sobre el apartado llamado “Iniciar trabajo”
+
+![Descripción de la imagen](./images-md/14.png)
+[^1]:Figura 14. (Pantalla de Iniciar trabajo)
+
+En esta pantalla se muestran todos los operarios registrados en la aplicación, para mandar un trabajo a un operario, escribimos en los campos de texto los siguientes datos, “id del trabajador”, el identificador único de cada trabajador, marcado en la primera columna de la tabla, y el número de paladas mínimas que necesita el operario para terminar el trabajo, una vez introducidos estos datos, hacemos clic sobre el botón “mandar trabajo” para registrarlo en la base de datos.
+En el menú, en la parte inferior, existe la opción llamada “cerrar sesión”, esta, cerrará la sesión de nuestra cuenta y nos devolverá a la pantalla de login. Para ver los trabajos que tiene un operario disponible, en el panel de login, iniciamos sesión como operario.
+
+![Descripción de la imagen](./images-md/15.png)
+[^1]:Figura 15. (Pantalla de operario)
+
+En esta pantalla, podemos ver los trabajos activos que tiene cada empleado, al hacer clic en uno de los trabajos, entramos al panel de registro de paladas.
+
+![Descripción de la imagen](./images-md/16.png)
+[^1]:Figura 16. (Pantalla de registro de paladas)
+
+En esta pantalla, podemos registrar paladas, se indica en el texto en blanco inferior el número de mínimo de paladas que debemos realizar para poder marcar como completado el trabajo, también se indica el número de toneladas que vamos extrayendo. Una vez registrado un número mayor o igual al número de paladas necesarias, se nos redirige a la pantalla de operario y se cierra el
+trabajo, marcándolo como completado.
+
