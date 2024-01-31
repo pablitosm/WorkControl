@@ -105,7 +105,7 @@
         android:id="@+id/buttonAsesinador"
         android:layout_width="503dp"
         android:layout_height="65dp"
-        android:text="Asesinar"
+        android:text="Eliminar"
         android:backgroundTint="#EDA341"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
