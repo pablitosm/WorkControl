@@ -1,4 +1,4 @@
-**Manual de usuario de la aplicación**
+# Manual de usuario de la aplicación
 
 La aplicación WorkControl es una aplicación destinada al control de diferentes trabajadores, tras iniciarla, se nos abrirá un panel para iniciar sesión.
 
