@@ -19,7 +19,7 @@ Usuario con permisos de operario:
 
 En caso de que seamos un nuevo usuario y no dispongamos de ninguna cuenta, tendremos que crearla, la aplicación dispone de un menú para la creación de cuentas, para ello, haremos clic sobre texto que pone “aquí”, cuando presionemos sobre ese campo, se iniciará la pantalla de creación de usuarios.
 
-![Descripción de la imagen]([./images-md/2.png](https://raw.githubusercontent.com/pablitosm/workcontrol/master/images-md/2.png))
+![Descripción de la imagen](https://raw.githubusercontent.com/pablitosm/workcontrol/master/images-md/2.png))
 **Figura 2. (Pantalla de creación de cuentas)**
 
 Una vez dentro, podremos ver la pantalla, esta contiene los datos necesarios a introducir para crear un usuario nuevo. A continuación, rellenamos los datos y hacemos clic sobre el botón “registro”.
@@ -69,7 +69,7 @@ En esta pantalla, podemos ver una tabla con los datos de los turnos de los opera
 A continuación, al hacer clic en el menú sobre la opción de “maquinaria”, cargamos la pantalla de
 maquinaria, en esta pantalla podemos ver información a cerca de las diferentes máquinas activas de la empresa, en esta pantalla también podemos añadir y dar de baja nuevas máquinas.
 
-![Descripción de la imagen]([./images-md/8.png](https://raw.githubusercontent.com/pablitosm/workcontrol/master/images-md/8.png))
+![Descripción de la imagen](https://raw.githubusercontent.com/pablitosm/workcontrol/master/images-md/8.png))
 **Figura 8. (Pantalla de maquinaria)**
 
 Vamos a suponer que queremos dar de alta una nueva máquina, para ello, hacemos clic sobre el botón naranja llamado “añadir máquina”
