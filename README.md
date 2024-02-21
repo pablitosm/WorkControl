@@ -2,7 +2,7 @@
 
 La aplicación WorkControl es una aplicación destinada al control de diferentes trabajadores, tras iniciarla, se nos abrirá un panel para iniciar sesión.
 
-![Descripción de la imagen](./images-md/1.png)
+![Descripción de la imagen](https://raw.githubusercontent.com/pablitosm/workcontrol/master/images-md/1.png)
 **Figura 1. (Pantalla de inicio de sesión)**
 
 En esta pantalla, podremos introducir nuestros datos para iniciar sesión, para iniciar la sesión introduciremos los datos en los campos de texto y le daremos al botón de iniciar sesión.
